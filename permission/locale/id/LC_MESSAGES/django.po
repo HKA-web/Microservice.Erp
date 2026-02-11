@@ -1,0 +1,77 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-28 11:11+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\apps.py:9
+#, fuzzy
+#| msgid "object permission user id"
+msgid "Object Permission"
+msgstr "id pengguna izin objek"
+
+#: .\models\permission.py:35
+msgid "content type"
+msgstr "jenis kontent"
+
+#: .\models\permission.py:36
+msgid "Used for linked key content type"
+msgstr "Digunakan untuk kunci jenis kontent yang ditautkan"
+
+#: .\models\permission.py:39
+msgid "object id"
+msgstr "id obyek"
+
+#: .\models\permission.py:40
+msgid "Used for linked key object"
+msgstr "Digunakan untuk kunci obyek yang ditautkan"
+
+#: .\models\permission.py:57
+msgid "user"
+msgstr "pengguna"
+
+#: .\models\permission.py:58
+msgid "Used for linked key user"
+msgstr "Digunakan untuk kunci pengguna yang ditautkan"
+
+#: .\models\permission.py:77
+msgid "object permission user id"
+msgstr "id pengguna izin objek"
+
+#: .\models\permission.py:78 .\models\permission.py:112
+msgid "Used for identity"
+msgstr "Digunakan untuk identitas"
+
+#: .\models\permission.py:84
+msgid "Used store user object permission"
+msgstr "Digunakan untuk menyimpan izin object pengguna"
+
+#: .\models\permission.py:91
+msgid "group"
+msgstr "grup"
+
+#: .\models\permission.py:92
+msgid "Used for linked key group"
+msgstr "Digunakan untuk kunci grup yang ditautkan"
+
+#: .\models\permission.py:111
+msgid "object permission group id"
+msgstr "id izin obyek grup"
+
+#: .\models\permission.py:118
+msgid "Used store group object permission"
+msgstr "Digunakan untuk menyimpan izin obyek grup"

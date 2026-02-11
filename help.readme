@@ -1,0 +1,107 @@
+git clone
+git submodule update --init --recursive
+git pull --recurse-submodules
+
+Or If You Will Add Submodule
+git submodule add https://github.com/syifarahmat/rediswindows.git bin/redis/lates
+git submodule add https://github.com/syifarahmat/redisjson.git bin/redis/json
+
+Required :
+Python 3.12 or up
+
+First:
+cwd.cmd
+pip install -r requirements.pypi --no-cache-dir
+
+cwd runredis
+cwd runhuey
+cwd runhuey --queue high
+cwd makemigrations authentication
+cwd makemigrations
+cwd migrate authentication
+cwd migrate
+cwd collectpermission
+cwd collecticon
+cwd loaddata core\fixtures\menu.xml
+cwd loaddata whatsapp\fixtures\menu.xml
+pause
+
+For Run Server :
+python -m daphne -e ssl:8888:privateKey=erpro.key:certKey=erpro.crt setup.asgi:application
+python -m daphne -b 0.0.0.0 -p 8080 setup.asgi:application
+cwd rundaphne
+
+For Project :
+python manage.py makemessages --keep-pot --no-wrap --domain=django --all --ignore=env/* --ignore=bin/* --ignore=assets/* --ignore=authentication/* --ignore=chat/* --ignore=comment/* --ignore=core/* --ignore=data/* --ignore=empty/* --ignore=env/* --ignore=library/* --ignore=locale/* --ignore=node_modules/* --ignore=queryset/* --ignore=whatsapp/* --ignore=permission/* --ignore=report/* --ignore=mobile/* --ignore=dotnet/* --ignore=filemanager/* --ignore=gps/* --extension=html,py,xml
+python manage.py makemessages --keep-pot --no-wrap --domain=djangojs --all --ignore=env/* --ignore=bin/* --ignore=*/vendor/* --ignore=*/node_modules/* --ignore=assets/* --ignore=authentication/* --ignore=chat/* --ignore=comment/* --ignore=core/* --ignore=data/* --ignore=empty/* --ignore=env/* --ignore=library/* --ignore=locale/* --ignore=node_modules/* --ignore=queryset/* --ignore=whatsapp/* --ignore=permission/* --ignore=report/* --ignore=mobile/* --ignore=dotnet/* --extension=js,jsx,ts
+
+For App :
+Don forgot to create directory with name locale for all App
+cd {appdirectory}
+python ..\manage.py makemessages --keep-pot --no-wrap --domain=django --all --extension=html,py,xml
+python ..\manage.py makemessages --keep-pot --no-wrap --domain=djangojs --all --extension=js,jsx,ts
+python ..\manage.py makemessages --keep-pot --no-wrap --domain=djangojs --all --extension=js,jsx,ts --ignore=local_modules/* --ignore=node_modules/* --ignore=node/util/i18n.js --ignore=dist/**
+
+python manage.py compilemessages --ignore=env/* --ignore=bin/* --ignore=assets/* --ignore=addons/*
+
+cwd dumpdata --natural-foreign core.menu --format xml --indent 2 --output core\fixtures\menu.xml
+cwd dumpdata --natural-foreign core.province core.city core.district core.village core.company core.menu core.periodic whatsapp.command whatsapp.session --format xml --indent 2 --output core\fixtures\data.xml
+cwd dumpdata --natural-foreign --format xml --indent 2 --output core\migrations\core.[xml.bz2, xml.gz, xml.lzma, xml.xz or only xml]
+cwd dumpdata --natural-foreign --format json --indent 2 --output core\migrations\core.[json.bz2, json.gz, json.lzma, json.xz or only json]
+cwd dumpdata --natural-foreign --format yaml --indent 2 --output core\migrations\core.[yaml.bz2, yaml.gz, yaml.lzma, yaml.xz or only yaml]
+cwd loaddata data.json.[bz2, gz, lzma, or only xz]
+cwd loaddata data.xml.[bz2, gz, lzma, or only xz]
+cwd loaddata data.yaml.[bz2, gz, lzma, or only xz]
+
+For Dump Group & Group Permission :
+cwd dumpdata auth.group authentication.groups --format xml --indent 2 --output authentication\fixtures\group.xml
+cwd dumpdata --natural-foreign authentication.groupspermission --format xml --indent 2 --output authentication\fixtures\groupspermission.xml
+
+For Dump User Permission :
+cwd dumpdata --natural-foreign authentication.userpermission --format xml --indent 2 --output authentication\fixtures\userpermission.xml
+
+If Error Encoding In Dumpdata Or Loaddata Run : python -Xutf8 manage.py dumpdata .....
+
+from core.models import CompanyTree
+get = lambda node_id: CompanyTree.objects.get(pk=node_id)
+root = CompanyTree.add_root()
+node = get(root.pk).add_child()
+get(node.pk).add_sibling()
+get(node.pk).add_sibling()
+get(node.pk).add_child()
+get(node.pk).add_child()
+get(node.pk).add_child()
+
+ACL LIST
+ACL SETUSER default on nopass ~* &* +@all
+ACL SETUSER default on >erpro ~* &* +@all
+ACL SETUSER erpro on >erpro ~* &* +@all
+ACL SAVE
+
+set MIGRATE=True
+python manage.py makemigrations
+python manage.py migrate authentication
+python manage.py migrate core
+python manage.py migrate
+
+python -m spacy download en_core_web_sm
+
+python manage.py invalidate core
+
+
+# render data as json
+from authentication.models import Group
+from authentication.apis.serializers import GroupSerializer
+from rest_framework.renderers import JSONRenderer
+data = GroupSerializer(Group.objects.first(), expand=['permissions'],).data
+JSONRenderer().render(data)
+
+
+# merge po
+\bin\msgcat --no-wrap --use-first -o .\merged.po .\grid.po .\djangojs.po
+
+# more help
+cwd safesettings -p plain text here # use for encrypt settings
+cwd generatescretkey -l 100 # use to regenerate secreet key
+cwd cleanmigrations # to clean all migrations file inside application/migrations
+cwd clean # to clean .pyc files and __pycache__ directories

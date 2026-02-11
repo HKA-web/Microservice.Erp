@@ -1,0 +1,235 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-28 10:55+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+#: .\library\hueymonitor\admin.py:40 .\library\hueymonitor\models.py:53
+msgid "Task name"
+msgstr ""
+
+#: .\library\hueymonitor\admin.py:60
+msgid "Task hierarchy"
+msgstr ""
+
+#: .\library\hueymonitor\admin.py:131
+msgid "Meta"
+msgstr ""
+
+#: .\library\hueymonitor\admin.py:133
+msgid "Task Information"
+msgstr ""
+
+#: .\library\hueymonitor\admin.py:146
+msgid "Hierarchy"
+msgstr ""
+
+#: .\library\hueymonitor\apps.py:7
+msgid "Huey Monitor"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:39
+msgid "Task UUID"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:40
+msgid "The UUID of the Huey-Task"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:48
+msgid "Parent Task"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:49
+msgid "Only set if this task is a sub task started from his parent."
+msgstr ""
+
+#: .\library\hueymonitor\models.py:60
+#: .\library\hueymonitor\templates\admin\hueymonitor\taskmodel\task_hierarchy_info.html:14
+msgid "State"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:61
+msgid "Last Signal information"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:65
+msgid "Finished"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:67
+msgid "Indicates that this Task no longer waits or run. (It does not mean that execution was successfully completed.)"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:76
+msgid "Description"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:77
+msgid "Prefix for progress information"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:81
+msgid "The number of expected iterations"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:86 .\library\hueymonitor\models.py:250
+#: .\library\hueymonitor\templates\admin\hueymonitor\taskmodel\field_signals.html:8
+msgid "Progress Count"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:87
+msgid "Number of units processed (If provided)"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:91
+msgid "Cumulate Progress?"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:93
+msgid "Should the progress of the sub tasks be added up and saved in the parent task? (Will be done after the task has ended)"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:100
+msgid "String that will be used to define the unit of each iteration"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:104
+msgid "Used to convert the units."
+msgstr ""
+
+#: .\library\hueymonitor\models.py:125
+msgid "percentage"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:132
+msgid "progress"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:142
+msgid "throughput"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:158
+msgid "finished"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:161
+#: .\library\hueymonitor\templates\admin\hueymonitor\taskmodel\task_hierarchy_info.html:15
+msgid "Progress"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:169
+msgid "Unit"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:199 .\library\hueymonitor\models.py:229
+#: .\library\hueymonitor\templates\admin\hueymonitor\taskmodel\task_hierarchy_info.html:13
+msgid "Task"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:200
+msgid "Tasks"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:212
+#: .\library\hueymonitor\templates\admin\hueymonitor\taskmodel\field_signals.html:9
+#: .\library\hueymonitor\templates\admin\hueymonitor\taskmodel\task_hierarchy_info.html:17
+msgid "Hostname"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:213
+msgid "Hostname of the machine that creates this Signal"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:216
+#: .\library\hueymonitor\templates\admin\hueymonitor\taskmodel\field_signals.html:10
+#: .\library\hueymonitor\templates\admin\hueymonitor\taskmodel\task_hierarchy_info.html:18
+msgid "PID"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:217
+msgid "Process ID that creates this Signal"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:221
+msgid "Thread Name"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:222
+msgid "Name of the thread that creates this Signal"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:230
+msgid "The Task instance for this Signal Info entry."
+msgstr ""
+
+#: .\library\hueymonitor\models.py:234
+#: .\library\hueymonitor\templates\admin\hueymonitor\taskmodel\field_signals.html:7
+msgid "Signal Name"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:235
+msgid "Name of the signal"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:240
+#: .\library\hueymonitor\templates\admin\hueymonitor\taskmodel\field_signals.html:12
+#: .\library\hueymonitor\templates\admin\hueymonitor\taskmodel\task_hierarchy_info.html:20
+msgid "Exception Line"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:244
+msgid "Exception"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:245
+msgid "Full information of a exception"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:251
+msgid "Progress (if any) at the time of creation."
+msgstr ""
+
+#: .\library\hueymonitor\models.py:255
+#: .\library\hueymonitor\templates\admin\hueymonitor\taskmodel\task_hierarchy_info.html:16
+msgid "Create date"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:256
+msgid "(will be set automatically)"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:270
+msgid "Task Signal"
+msgstr ""
+
+#: .\library\hueymonitor\models.py:271
+msgid "Task Signals"
+msgstr ""
+
+#: .\library\hueymonitor\templates\admin\hueymonitor\taskmodel\change_list_object_tools.html:8
+msgid "Flush all task locks"
+msgstr ""
+
+#: .\library\hueymonitor\templates\admin\hueymonitor\taskmodel\field_signals.html:6
+msgid "Time period"
+msgstr ""
+
+#: .\library\hueymonitor\templates\admin\hueymonitor\taskmodel\field_signals.html:11
+#: .\library\hueymonitor\templates\admin\hueymonitor\taskmodel\task_hierarchy_info.html:19
+msgid "Thread"
+msgstr ""

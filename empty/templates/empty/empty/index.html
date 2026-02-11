@@ -1,0 +1,45 @@
+{% extends 'base/index.html' %}
+{% load static %}
+{% load json %}
+{% load i18n %}
+
+{% load environment %}
+{% load settings %}
+{% block identity %} empty {% endblock identity %}
+{% block title %} {{ _('Empty') }} {% endblock %}
+{% block head %}
+    {{ block.super }}
+
+        {% include 'partial/common.html' with part='requirediframe' tag='open,close' %}
+
+    {% include 'partial/common.html' with part='header' %}
+    {% include 'partial/common.html' with part='application' type='css' %}
+{% endblock head %}
+<style type="text/css" rel="stylesheet">{% block stylesheet %}{% endblock stylesheet %}</style>
+{% block body %}
+    <div id="main" class="layout-row flex">
+        <div id="content" class="flex ">
+            <div class="d-flex h-100">
+                <div class="d-flex flex h-100 block m-0">
+                    <div class="d-flex flex-column flex inner">
+                        <div class="flex h-1x grid" id="empty"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
+{% block footer %}
+    {% include 'partial/common.html' with part='footer' %}
+
+
+{% endblock footer %}
+
+    {% block javascript %}
+        <script type="text/javascript">
+            $(document).ready(function() {
+                {% include 'partial/common.html' with part='csfr' %}
+            });
+        </script>
+    {% endblock javascript %}
+

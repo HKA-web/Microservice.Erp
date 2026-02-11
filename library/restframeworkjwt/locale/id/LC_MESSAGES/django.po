@@ -1,0 +1,125 @@
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <oon.arfiandwi@gmail.com>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: djangorestframework_simplejwt\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-28 10:55+0700\n"
+"PO-Revision-Date: 2024-03-13 10:16+0200\n"
+"Last-Translator: Anonymous User <root@erpro.local>\n"
+"Language: id_ID\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.10.0\n"
+
+#: .\library\restframeworkjwt\authentication.py:85
+msgid "Authorization header must contain two space-delimited values"
+msgstr "Header otorisasi harus berisi dua nilai yang dipisahkan spasi"
+
+#: .\library\restframeworkjwt\authentication.py:111
+msgid "Given token not valid for any token type"
+msgstr "Token yang diberikan tidak valid untuk semua jenis token"
+
+#: .\library\restframeworkjwt\authentication.py:123
+#: .\library\restframeworkjwt\authentication.py:150
+msgid "Token contained no recognizable user identification"
+msgstr "Token tidak mengandung identifikasi pengguna yang dapat dikenali"
+
+#: .\library\restframeworkjwt\authentication.py:128
+msgid "User not found"
+msgstr "Pengguna tidak ditemukan"
+
+#: .\library\restframeworkjwt\authentication.py:131
+msgid "User is inactive"
+msgstr "Pengguna tidak aktif"
+
+#: .\library\restframeworkjwt\backends.py:69
+msgid "Unrecognized algorithm type '{}'"
+msgstr "Jenis algoritma tidak dikenal '{}'"
+
+#: .\library\restframeworkjwt\backends.py:75
+msgid "You must have cryptography installed to use {}."
+msgstr "Anda harus memasang kriptografi untuk menggunakan {}."
+
+#: .\library\restframeworkjwt\backends.py:90
+msgid "Unrecognized type '{}', 'leeway' must be of type int, float or timedelta."
+msgstr "Tipe '{}', 'leeway' yang tidak dikenal harus bertipe int, float, atau timedelta."
+
+#: .\library\restframeworkjwt\backends.py:104
+#: .\library\restframeworkjwt\backends.py:154
+#: .\library\restframeworkjwt\exceptions.py:47
+#: .\library\restframeworkjwt\tokens.py:50
+msgid "Token is invalid or expired"
+msgstr "Token tidak valid atau kedaluwarsa"
+
+#: .\library\restframeworkjwt\backends.py:152
+msgid "Invalid algorithm specified"
+msgstr "Algoritma yang ditentukan tidak valid"
+
+#: .\library\restframeworkjwt\blacklist\admin.py:79
+msgid "jti"
+msgstr "jti"
+
+#: .\library\restframeworkjwt\blacklist\admin.py:85
+msgid "user"
+msgstr "pengguna"
+
+#: .\library\restframeworkjwt\blacklist\admin.py:91
+msgid "created at"
+msgstr "created at"
+
+#: .\library\restframeworkjwt\blacklist\admin.py:97
+msgid "expires at"
+msgstr "kedaluwarsa pada"
+
+#: .\library\restframeworkjwt\blacklist\apps.py:7
+msgid "Token Blacklist"
+msgstr "Daftar Hitam Token"
+
+#: .\library\restframeworkjwt\blacklist\models.py:22
+msgid "Used store outstanding token"
+msgstr ""
+
+#: .\library\restframeworkjwt\blacklist\models.py:43
+#, fuzzy
+#| msgid "Token is blacklisted"
+msgid "Used store blacklisted token"
+msgstr "Token masuk daftar hitam"
+
+#: .\library\restframeworkjwt\serializers.py:35
+msgid "No active account found with the given credentials"
+msgstr "Tidak ada akun aktif yang ditemukan dengan kredensial yang diberikan"
+
+#: .\library\restframeworkjwt\settings.py:71
+msgid "The '{}' setting has been removed. Please refer to '{}' for available settings."
+msgstr "Setelan '{}' telah dihapus. Silakan merujuk ke '{}' untuk pengaturan yang tersedia."
+
+#: .\library\restframeworkjwt\tokens.py:36
+msgid "Cannot create token with no type or lifetime"
+msgstr "Tidak dapat membuat token tanpa tipe atau masa pakai"
+
+#: .\library\restframeworkjwt\tokens.py:108
+msgid "Token has no id"
+msgstr "Token tidak memiliki id"
+
+#: .\library\restframeworkjwt\tokens.py:121
+msgid "Token has no type"
+msgstr "Token tidak memiliki tipe"
+
+#: .\library\restframeworkjwt\tokens.py:124
+msgid "Token has wrong type"
+msgstr "Jenis token salah"
+
+#: .\library\restframeworkjwt\tokens.py:183
+msgid "Token has no '{}' claim"
+msgstr "Token tidak memiliki klaim '{}'"
+
+#: .\library\restframeworkjwt\tokens.py:188
+msgid "Token '{}' claim has expired"
+msgstr "Klaim token '{}' telah kedaluwarsa"
+
+#: .\library\restframeworkjwt\tokens.py:245
+msgid "Token is blacklisted"
+msgstr "Token masuk daftar hitam"

@@ -1,0 +1,155 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-28 11:11+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\apis\views\schema.py:58
+#, python-format
+msgid "ModelSchema data %(count)s have been successfully deleted"
+msgstr "Data ModelSchema %(count)s telah berhasil dihapus"
+
+#: .\apis\views\schema.py:64
+#, python-format
+msgid "ModelSchema %(model_schema_name)s have been successfully deleted"
+msgstr "ModelSchema %(model_schema_name)s telah berhasil dihapus"
+
+#: .\apis\views\schema.py:111
+#, fuzzy, python-format
+#| msgid "FieldSchema data %(count)s have been successfully deleted"
+msgid "SchemaField data %(count)s have been successfully deleted"
+msgstr "Data FieldSchema %(count)s telah berhasil dihapus"
+
+#: .\apis\views\schema.py:117
+#, fuzzy, python-format
+#| msgid "FieldSchema %(field_schema_name)s have been successfully deleted"
+msgid "FieldSchema %(schema_field_name)s have been successfully deleted"
+msgstr "FieldSchema %(field_schema_name)s telah berhasil dihapus"
+
+#: .\apps.py:7
+msgid "Report"
+msgstr "Laporan"
+
+#: .\models\schema.py:22
+#, fuzzy
+#| msgid "model schema id"
+msgid "schema id"
+msgstr "id skema model"
+
+#: .\models\schema.py:23 .\models\schema.py:122
+msgid "Used for identity"
+msgstr "Digunakan untuk identitas"
+
+#: .\models\schema.py:27
+#, fuzzy
+#| msgid "model schema name"
+msgid "schema name"
+msgstr "nama skema model"
+
+#: .\models\schema.py:28 .\models\schema.py:126
+msgid "Used for view"
+msgstr "Digunakan untuk melihat"
+
+#: .\models\schema.py:32
+msgid "database"
+msgstr "basis data"
+
+#: .\models\schema.py:33
+msgid "Used for database alias"
+msgstr "Digunakan untuk alias basis data"
+
+#: .\models\schema.py:37
+msgid "query"
+msgstr "pertanyaan"
+
+#: .\models\schema.py:38
+msgid "Used for auto generate table view"
+msgstr "Digunakan untuk menghasilkan tampilan tabel secara otomatis"
+
+#: .\models\schema.py:43
+#, fuzzy
+#| msgid "Used store history model schema"
+msgid "Used store history schema"
+msgstr "Digunakan untuk menyimpan riwayat skema model"
+
+#: .\models\schema.py:50
+#, fuzzy
+#| msgid "Used store model schema"
+msgid "Used store schema"
+msgstr "Digunakan untuk menyimpan skema model"
+
+#: .\models\schema.py:121
+#, fuzzy
+#| msgid "field schema id"
+msgid "schema field id"
+msgstr "id skema bidang"
+
+#: .\models\schema.py:125
+#, fuzzy
+#| msgid "field schema name"
+msgid "schema field name"
+msgstr "nama skema bidang"
+
+#: .\models\schema.py:132
+#, fuzzy
+#| msgid "model schema"
+msgid "schema"
+msgstr "skema model"
+
+#: .\models\schema.py:133
+msgid "Used for linked key"
+msgstr "Digunakan untuk kunci yang ditautkan"
+
+#: .\models\schema.py:136
+msgid "class name"
+msgstr "nama kelas"
+
+#: .\models\schema.py:137
+msgid "Used for django field class"
+msgstr "Digunakan untuk kelas bidang django"
+
+#: .\models\schema.py:141
+msgid "kwargs"
+msgstr "kwargs"
+
+#: .\models\schema.py:142
+msgid "Used for propertie field"
+msgstr "Digunakan untuk bidang properti"
+
+#: .\models\schema.py:147
+#, fuzzy
+#| msgid "Used store history model schema"
+msgid "Used store history schema field"
+msgstr "Digunakan untuk menyimpan riwayat skema model"
+
+#: .\models\schema.py:155
+#, fuzzy
+#| msgid "Used store field schema"
+msgid "Used store schema field"
+msgstr "Digunakan untuk menyimpan skema bidang"
+
+#~ msgid "managed"
+#~ msgstr "dikelola"
+
+#~ msgid "Used for managed by django, if True query is None will auto generated table, if query is not None will auto generate query as table view"
+#~ msgstr "Digunakan untuk mengelola oleh django, jika Benar kueri adalah Tidak Ada akan membuat tabel secara otomatis, jika kueri tidak Tidak Ada akan secara otomatis menghasilkan kueri sebagai tampilan tabel"
+
+#~ msgid "table name"
+#~ msgstr "nama tabel"
+
+#~ msgid "Used for table or table view name"
+#~ msgstr "Digunakan untuk nama tampilan tabel atau tabel"

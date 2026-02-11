@@ -1,0 +1,111 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-28 10:55+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+#: .\library\hueymonitorutils\approve_workflow\admin.py:93
+msgid "Warning: \"Ready to Approve\" flag was not set!"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\admin.py:94
+#, python-format
+msgid "%s was approved"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\models.py:23
+msgid "BaseApproveModel.pk.verbose_name"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\models.py:24
+msgid "BaseApproveModel.pk.help_text"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\models.py:32
+msgid "BaseApproveModel.is_draft.verbose_name"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\models.py:33
+msgid "BaseApproveModel.is_draft.help_text"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\models.py:43
+msgid "BaseApproveModel.approved.verbose_name"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\models.py:44
+msgid "BaseApproveModel.approved.help_text"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\models.py:48
+msgid "BaseApproveModel.blocked.verbose_name"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\models.py:49
+msgid "BaseApproveModel.blocked.help_text"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\models.py:60
+msgid "Approved"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\models.py:101
+msgid "This field cannot be blank."
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\models.py:215
+msgid "BaseApproveWorkflowModel.ready_to_approve.verbose_name"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\models.py:216
+msgid "BaseApproveWorkflowModel.ready_to_approve.help_text"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\templates\approve_workflow\change_form.html:7
+msgid "Save and Approve"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\templates\approve_workflow\submit_line.html:4
+msgid "Save"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\templates\approve_workflow\submit_line.html:7
+msgid "Delete"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\templates\approve_workflow\submit_line.html:9
+msgid "Save as new"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\templates\approve_workflow\submit_line.html:10
+msgid "Save and add another"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\templates\approve_workflow\submit_line.html:11
+msgid "Save and continue editing"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\templates\approve_workflow\submit_line.html:11
+msgid "Save and view"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\templates\approve_workflow\submit_line.html:12
+msgid "Close"
+msgstr ""
+
+#: .\library\hueymonitorutils\approve_workflow\templates\approve_workflow\submit_line.html:14
+msgid "Approve"
+msgstr ""

@@ -1,0 +1,817 @@
+{% extends 'base/index.html' %}
+{% load json %}
+{% load random %}
+{% load static %}
+
+{% load environment %}
+{% load settings %}
+{% load option %}
+{% block identity %} home {% endblock identity %}
+{% block title %}
+    {{ _('Home') }} :
+    {% settingsdjango 'PROJECT.NAME' as systemname %}{% if systemname is not None %}
+        {{ systemname }}{% else %}
+        {{ settings.PROJECT.NAME }}
+    {% endif %}
+{% endblock %}
+{% block head %}
+    {{ block.super }}
+    {% include 'partial/common.html' with part='disableiframe' tag='open,close' %}
+    {% include 'partial/common.html' with part='header' %}
+    {% include 'partial/vendor.html' with part='clippy' type='css' %}
+    {% include 'partial/common.html' with part='application' type='css' %}
+{% endblock head %}
+<style type="text/css" rel="stylesheet">{% block stylesheet %}{% endblock stylesheet %}</style>
+{% block body %}
+    <header id="header" class="page-header box-shadow animate fadeInDown sticky bg-white">
+        <div class="navbar navbar-expand-lg">
+            <a class="d-lg-none i-con-h-a px-1" data-toggle="modal" data-target="div.mainaside">
+                <i class="i-con i-con-menu text-muted"></i>
+            </a>
+            <a href="{% include 'partial/common.html' with part='void' %}" class="navbar-brand">
+                <img src="{% url 'logo' dimen='mdpi' %}" width="24" height="24"/>
+                <span class="hidden-folded d-inline l-s-n-1x ">
+                    {% settingsdjango 'PROJECT.NAME' as systemname %}{% if systemname is not None %}
+                        {{ systemname }}{% else %}
+                        {{ settings.PROJECT.NAME }}
+                    {% endif %}
+                </span>
+            </a>
+            <div class="collapse navbar-collapse order-2 order-lg-1" id="navbarToggler">
+                <ul class="navbar-nav mx-auto" data-nav>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% include 'partial/common.html' with part='void' %}" rel="{{ request.user.real_name }}" target="_blank">
+                            <span class="nav-text">{{ request.user.real_name }}</span>
+                        </a>
+                    </li>
+                    {% if settings.DEBUG %}
+                        <li class="nav-item">
+                            <a href="https://js.devexpress.com/Documentation/ApiReference/" target="_blank" rel="DevExtreme" class="nav-link">
+                                <span class="nav-text">DevExtreme</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://fontawesome.com/search?s=brands" target="_blank" rel="Font Awesome" class="nav-link">
+                                <span class="nav-text">Font Awesome</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://animate.style/" target="dialog" rel="Animate.css" class="nav-link">
+                                <span class="nav-text">Animate.css</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+                <form class="input-group m-2 my-lg-0 i-con-h-a ">
+                    <span class="input-group-prepend abs-l">
+                        <button type="button" class="btn no-shadow no-bg px-0">
+                            <i class="i-con i-con-search text-fade w-16"></i>
+                        </button>
+                    </span>
+                    <input type="text" class="form-control no-border no-shadow no-bg ml-3" placeholder="{{ _('Search...') }}">
+                </form>
+            </div>
+            <ul class="nav navbar-menu order-1 order-lg-2">
+                <li class="nav-item d-sm-block">
+                    <span class="nav-link px-2 mr-lg-2 circle bg-light">
+                        <i class="fa-solid fa-sun-bright fa-lg faa-burst animated faa-slow text-danger websocket"></i>
+                    </span>
+                </li>
+                {% if screensaver is not None %}
+                    <li class="nav-item d-sm-block">
+                        <a href="{% include 'partial/common.html' with part='void' %}" class="nav-link px-2 i-con-h-a mr-lg-2 circle bg-light" data-toggle="modal" data-target="#screensaver">
+                            <i class="fa-light fa-eye-slash fa-lg faa-flash animated-hover"></i>
+                        </a>
+                    </li>
+                {% endif %}
+                <li class="nav-item d-sm-block">
+                    <a class="nav-link px-2 i-con-h-a mr-lg-2 circle bg-light" data-toggle="reload">
+                        <i class="i-con i-con-refresh"></i>
+                    </a>
+                </li>
+                <li class="nav-item d-none d-sm-block">
+                    <a class="nav-link px-2 i-con-h-a mr-lg-2 circle bg-light" data-toggle="fullscreen">
+                        <i class="i-con i-con-fullscreen"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link px-2 i-con-h-a mr-lg-2 circle bg-light" data-toggle="dropdown">
+                        <i class="i-con i-con-bell"><i></i></i>
+                        <span class="badge badge-pill badge-up bg-danger">{% optionvalue 'CORE:N:L:L' as value %}{{ value }}</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right mt-3 w-md animate fadeIn p-0 notification">
+                        <div class="d-flex px-3 py-2 b-t">
+                            <div class="flex">
+                                <strong>{{ _('Lates Notifications') }}</strong>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider m-0"></div>
+                        <div class="scrollable hover">
+                            <div class="list list-row animates animates-fadeInUp notification">
+                                {% for notification in notifications %}
+                                    <div class="list-item">
+                                        <div>
+                                            {% with color='bg-primary-lt bg-secondary-lt bg-success-lt bg-info-lt bg-warning-lt bg-danger-lt bg-light-lt' %}
+                                                <a href="{% include 'partial/common.html' with part='void' %}">
+                                                    <span class="w-32 avatar circle {% randomchoice color.split %}">{{ notification.notification_name|make_list|first|title }}{{ notification.content|make_list|first|title }}</span>
+                                                </a>
+                                            {% endwith %}
+                                        </div>
+                                        <div class="flex">
+                                            <div class="item-feed h-2x">
+                                                {% autoescape off %}{{ notification.content }} <a href="{% include 'partial/common.html' with part='void' %}">{{ notification.notification_name }}</a>{% endautoescape %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="d-flex px-3 py-2 b-t">
+                            <div class="flex">
+                                <span>{% optionvalue 'CORE:N:L:L' as value %}{{ value }} {{ _('Notifications') }}</span>
+                            </div>
+                            <a href="{% url 'core:notification' %}" target="tab" rel="{{ _('Notification') }}">{{ _('See all') }}<span> </span><i class="text-muted"></i></a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link px-2 w-32 h-32 i-con-h-a mr-lg-2 circle bg-light" data-toggle="dropdown">
+                        {% for locale in locales %}
+                            {% if locale.key in language.code %}
+                                <i class="b-white famfamfam fam-fix famfamfam-flags {{ locale.flag }}"><i></i></i>
+                            {% endif %}
+                        {% endfor %}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right w-md mt-3 animate fadeIn">
+                        <div class="mb-2 ml-3 mr-3">
+                            <strong>{{ _('Languange') }}</strong>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        {% for locale in locales %}
+                            {% if locale.key in language.code %}
+                                <div class="dropdown-item active">
+                                    <i class="b-white famfamfam famfamfam-flags {{ locale.flag }}"></i>{{ locale.value }}
+                                </div>
+                            {% else %}
+                                <a class="dropdown-item" href="{% url 'core:language-set' %}?language={{ locale.key }}" target="post" data-data-language="{{ locale.key }}">
+                                    <i class="b-white famfamfam famfamfam-flags {{ locale.flag }}"></i>{{ locale.value }}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                        <div class="mt-2 mb-2 ml-3 mr-3">
+                            <strong>{{ _('Company') }}</strong>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        {% for company in companys %}
+                            {% if company.pk in request.session.company %}
+                                <div class="dropdown-item active text-ellipsis">
+                                    <i class="b-white famfamfam famfamfam-silk award_star_gold_3"></i>{{ company.name }}
+                                </div>
+                            {% else %}
+                                <a class="dropdown-item text-ellipsis" href="{% url 'core:company-set' %}?company={{ company.pk }}" target="post" data-data-language="{{ company.pk }}">
+                                    <i class="b-white famfamfam famfamfam-silk award_star_silver_2"></i>{{ company.name }}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="{% include 'partial/common.html' with part='void' %}" data-toggle="dropdown" class="nav-link d-flex align-items-center py-0 px-lg-0 px-2 text-color">
+                        <span class=" mx-2 d-none l-h-1x d-lg-block text-right">
+                            <small class='text-fade d-block mb-1'>{{ _('Hello, Welcome') }}</small>
+                            <span>{{ request.user.real_name }}</span>
+                        </span>
+                        {% with color='bg-primary-lt bg-secondary-lt bg-success-lt bg-info-lt bg-warning-lt bg-danger-lt bg-light-lt' %}
+                            <span class="avatar w-32 circle {% randomchoice color.split %}">
+                                <img src="{{ request.user.avatar }}" alt="{{ request.user.avatar }}">
+                            </span>
+                        {% endwith %}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right w pt-0 mt-3 animate fadeIn">
+                    <a href="{% include 'partial/common.html' with part='void' %}" class="d-flex align-items-center justify-content-center">
+                        <div class="clock">
+                            <div class="inner">
+
+                                <div class="d-flex align-items-center justify-content-center overlay">
+                                    <div>
+                                        <div class="font-weight-bold text-center brand text-black-50">ERPro</div>
+                                        <div class="timezone text-center text-black-50 font-weight-lighter">{{ request.user.get_timezone_display }}</div>
+                                    </div>
+                                </div>
+
+                                <div class="hour hand"></div>
+                                <div class="minute hand"></div>
+                                <div class="second hand"></div>
+                                <div class="graduations">
+                                    <div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div><div class="graduation"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                        <div class="row no-gutters mb-2 text-center r-t b-b">
+                            <div class="col-4 b-r">
+                                <a href="{% include 'partial/common.html' with part='void' %}" class="py-3 d-block i-con-h-a">
+                                    <i class="i-con i-con-users"><i></i></i>
+                                </a>
+                            </div>
+                            <div class="col-4 b-r">
+                                <a href="{% include 'partial/common.html' with part='void' %}" class="py-3 d-block i-con-h-a">
+                                    <i class="i-con i-con-mail"><i></i></i>
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="{% include 'partial/common.html' with part='void' %}" class="py-3 d-block i-con-h-a">
+                                    <i class="i-con i-con-comment"><i></i></i>
+                                </a>
+                            </div>
+                        </div>
+                        <a class="dropdown-item" href="{% include 'partial/common.html' with part='void' %}">
+                            <span>{{ _('Profile') }}</span>
+                        </a>
+                        <a class="dropdown-item" href="{% include 'partial/common.html' with part='void' %}">
+                            <span>{{ _('Account Settings') }}</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        {% comment %}<a class="dropdown-item" href="{% url 'erpro:test' %}" target="get">
+                            {{ _('Need help?') }}
+                        </a>{% endcomment %}
+                        <a class="dropdown-item reload" href="{% url 'authentication:signout' %}" target="get">{{ _('Sign out') }}</a>
+                    </div>
+                </li>
+                <li class="nav-item d-lg-none">
+                    <a href="{% include 'partial/common.html' with part='void' %}" class="nav-link i-con-h-a px-1" data-toggle="collapse" data-toggle-class
+                       data-target="#navbarToggler">
+                        <i class="i-con i-con-nav text-muted"><i></i></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="layout-row flex" id="main">
+        <div class="mainaside page-sidenav no-shrink nav-expand animate fadeInLeft fade sticky bg-white folded" aria-hidden="true">
+            <div class="sidenav h-100 folded modal-dialog bg-white box-shadow">
+                <div class="hidden-folded no-shrink pt-2 pr-3 pb-2 pl-3">
+                    <div class="input-group m-1 my-lg-0 i-con-h-a ">
+                        <span class="input-group-prepend">
+                            <button type="button" class="btn no-shadow no-bg px-0">
+                            <i class="i-con i-con-search text-fade w-16"></i>
+                            </button>
+                        </span>
+                        <input type="text" class="form-control no-border no-shadow no-bg" placeholder="{{ _('Navigation Search...') }}"/>
+                    </div>
+                </div>
+                <div class="flex scrollable hover">
+                    <div class="nav-border b-primary" data-nav>
+                        <ul class="nav bg">
+                            {% if settings.DEBUG %}
+                                <li class="nav-search">
+                                <a href="{% include 'partial/common.html' with part='void' %}" id="DEBUG" data-base64="DEBUG">
+                                    <span class="nav-icon">
+                                        <i class="fa-light fa-bug"><i></i></i>
+                                    </span>
+                                    <span class="nav-text">{{ _('Debug Menu') }}</span>
+                                    <span class="nav-text hide">{{ _('Debug Menu') }}</span>
+                                    <span class="nav-badge">
+                                        <b class="badge badge-pill bg-danger theme hide">10</b>
+                                    </span>
+                                    <span class="nav-caret"></span>
+                                </a>
+                                <ul class="nav-sub">
+                                    <li class="nav-search">
+                                        <a href="/locale/" target="tab" rel="{{ _('Translation') }}" class="i-con-h-a" data-config-icon="fa-light fa-language" id="ROSETTA" data-base64="ROSETTA">
+                                            <span class="nav-icon">
+                                                <i class="fa-light fa-language"><i></i></i>
+                                            </span>
+                                            <span class="nav-text">{{ _('Translation') }}</span>
+                                            <span class="nav-text hide">{{ _('Translation') }}</span>
+                                            <span class="nav-badge">
+                                                <b class="badge badge-pill bg-danger theme hide">10</b>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                            {% include 'partial/common.html' with part='navigation' navigation=menu %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="no-shrink">
+                    <div class="text-sm p-3 b-t nav-fold">
+                        <a class="m-1 reload" href="{% url 'authentication:signout' %}" target="get">
+                            <span class="nav-icon">
+                                <i class="i-con i-con-shutdown"></i>
+                            </span>
+                        </a>
+                        <div class="text-sm hidden-folded m-1">
+                            <div>
+                                <a href="{{ '/about' }}" class="text-muted">{{ _('About') }}</a>
+                                <a href="{{ '/documentation' }}" class="text-muted mx-2 no-ajax" target="_blank">{{ _('Documentation') }}</a>
+                            </div>
+                            <div class="text-muted">
+                                <small class="text-muted">&copy;{{ _('Copyright') }} {% now 'Y' %},
+                                    {% settingsdjango 'PROJECT.NAME' as systemname %}{% if systemname is not None %}
+                                        {{ systemname }}{% else %}
+                                        {{ settings.PROJECT.NAME }}
+                                    {% endif %}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="flex">
+            <div class="modulepanel"></div>
+        </div>
+    </div>
+    {% if screensaver is not None %}
+        <div class="modal fade screensaver" id="screensaver" data-backdrop="true" aria-hidden="true" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-top bg-white b-b h-100">
+                <iframe class="d-flex flex h-100 w-100 block m-0 screensaver" src="{% url 'core:screensaver' screensaver.pk %}"></iframe>
+                <button class="btn btn-wave btn-icon i-con-h-a circle bg-light m-3 no-shadow abs-r abs-t" data-dismiss="modal">
+                    <span><i class="text-danger i-con i-con-close faa-tada animated-hover"></i></span>
+                </button>
+            </div>
+        </div>
+    {% endif %}
+    {% if settings.DEBUG %}
+        <div class="debug abs-b abs-l">
+            <div class="debug-series">
+                <div class="debug-series-bg">
+                    <div class="debug-series-bg-one"></div>
+                    <div class="debug-series-bg-two"></div>
+                    <div class="debug-series-bg-three"></div>
+                </div>
+                <div class="debug-series-text">
+                    <div class="debug-series-text-one">
+                        {{ _('django') }}
+                        {% settingsdjango 'PROJECT.DJANGO' as systemdjango %}{% if systemdjango is not None %}
+                            {{ systemdjango }}{% else %}
+                            {{ settings.PROJECT.DJANGO }}
+                        {% endif %}
+                    </div>
+                    <div class="debug-series-text-two">{{ _('debug') }}</div>
+                    <div class="debug-series-text-three">{{ _('mode') }}<br>{% now 'Y' %}</div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock body %}
+{% block footer %}
+    {% include 'partial/common.html' with part='footer' %}
+
+        {% include 'partial/vendor.html' with part='pace' %}
+        {% include 'partial/vendor.html' with part='screenfull' %}
+        {% include 'partial/vendor.html' with part='searchable' %}
+        {% include 'partial/vendor.html' with part='clippy' type='js' %}
+        {% include 'partial/vendor.html' with part='typeahead' type='js' %}
+        {% include 'partial/vendor.html' with part='websocket' type='js' %}
+
+    <script type="text/template" id="notification">
+        <div class="list-item">
+            <div>
+                <a href="{% include 'partial/common.html' with part='void' %}">
+                    <span class="w-32 avatar circle <tpl= $.lo.sample(['bg-primary-lt', 'bg-secondary-lt', 'bg-success-lt', 'bg-info-lt', 'bg-warning-lt', 'bg-danger-lt', 'bg-light-lt']) tpl/>"><tpl= notification.notification_name.trim().charAt(0).toUpperCase() tpl/><tpl= notification.content.trim().charAt(0).toUpperCase() tpl/></span>
+                </a>
+            </div>
+            <div class="flex">
+                <div class="item-feed h-2x">
+                    <tpl= notification.content tpl/> <a href="{% include 'partial/common.html' with part='void' %}"><tpl= notification.notification_name tpl/></a>
+                </div>
+            </div>
+        </div>
+    </script>
+{% endblock footer %}
+
+    {% block javascript %}
+        <script type="text/javascript">
+            $(document).ready(function () {
+                {% include 'partial/common.html' with part='csfr' %}
+                if (/^true$/i.test(localStorage.getItem('fullscreen.{{ request.user.base64pk }}'))) {
+                    DevExpress.ui.dialog.confirm('{{ _('Do you want to return to full screen mode?') }}', '{{ _('Restore full screen') }}')
+                        .done(function(done) {
+                            if (done && screenfull.enabled) {
+                                screenfull.toggle($('body')[0]);
+                            } else {
+                                localStorage.setItem('fullscreen.{{ request.user.base64pk }}', localStorage.getItem('fullscreen') ?? false);
+                            }
+                        });
+                }
+                setInterval(function() {
+                    if (localStorage.getItem('fullscreen')) {
+                        localStorage.setItem('fullscreen.{{ request.user.base64pk }}', localStorage.getItem('fullscreen') ?? false);
+                    }
+                    localStorage.removeItem('fullscreen');
+                }, 5000);
+                $('ul.nav').searchable({
+                    searchField: 'div.mainaside > div.sidenav > div > div > input',
+                    selector: 'li.nav-search',
+                    childSelector: 'span.nav-text',
+                    show: function (e) {
+                        e.fadeIn(550).slideDown(500);
+                    },
+                    hide: function (e) {
+                        e.fadeOut(550).slideUp(500);
+                    },
+                });
+                $('div.navbar > div > form > input').typeahead({
+                        classNames: {
+                            menu: 'dropdown-menu mt-3 w-100',
+                        },
+                    }, {
+                        display: 'name',
+                        source: new Bloodhound({
+                            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                            queryTokenizer: Bloodhound.tokenizers.whitespace,
+                            prefetch: '{% static 'vendor/typeahead/js/data.json' %}',
+                            remote: {
+                                url: '../data/films/queries/%search.json',
+                                wildcard: '%search',
+                                rateLimitWait: 500,
+                            },
+                        }),
+                        templates: {
+                            suggestion: function(data) {
+                                return '<a class="dropdown-item" href="' + data.link + '"><span class="d-block font-weight-500">' + data.name + '</span><pan class="text-muted">' + data.desc + '</pan></a>';
+                            },
+                        },
+                    },
+                ).on('typeahead:rendered', function(object, datum) {});
+                $('div.modulepanel').dxTabPanel({
+                    noDataText: void(0),
+                    animationEnabled: true,
+                    focusStateEnabled: false,
+                    width: '100%',
+                    height: '100%',
+                    deferRendering: false,
+                    showNavButtons: true,
+                    repaintChangesOnly: true,
+                    elementAttr: {
+                        class: 'index'
+                    },
+                    loop: true,
+                    {% autoescape off %}dataSource: {% if properties.menu.opens %}{% jsondumps properties.menu.opens 0 %}{% else %}[]{% endif %},{% endautoescape %}
+                    itemTitleTemplate: function (data, index, element) {
+                        if (data.icon) {
+                            element.append(
+                                $('<i/>', {
+                                    class: ['dx-icon', data.icon].join(' '),
+                                })
+                            );
+                        }
+                        element.append($('<span/>', {
+                            class: 'pl-2',
+                        }).text(data.menu_name));
+                        if (!data.noclose) {
+                            element.append(
+                                $('<i/>', {
+                                    class: 'dx-icon dx-icon-close',
+                                    click: function (e) {
+                                        $.util.tab.close(data);
+                                    },
+                                })
+                            );
+                        }
+                        $('<div/>', { appendTo: element, }).dxContextMenu({
+                            dataSource: [{
+                                key: 'CloseMultiple',
+                                text: '{{ _('Close Multiple') }}',
+                                items: [{
+                                    key: 'CloseAll',
+                                    text: '{{ _('Close All') }}',
+                                }, {
+                                    key: 'CloseAllExceptThis',
+                                    text: '{{ _('Close All Except This') }}',
+                                }, {
+                                    key: 'CloseAllOnTheRight',
+                                    text: '{{ _('Close All On The Right') }}',
+                                }, {
+                                    key: 'CloseAllOnTheLeft',
+                                    text: '{{ _('Close All On The Left') }}',
+                                },],
+                            }, {
+                                key: 'Close',
+                                text: '{{ _('Close') }}',
+                            },],
+                            target: $(element),
+                            onItemClick: function(e) {
+                                if (!e.itemData.items) {
+                                    var datasource = $.util.tab.datasource().data;
+                                    if (e.itemData.key === 'CloseAll') {
+                                        $.each(datasource, function(indexs, row) {
+                                            $.util.tab.close(row);
+                                        });
+                                    }
+                                    if (e.itemData.key === 'CloseAllExceptThis') {
+                                        $.each(datasource, function(indexs, row) {
+                                            if (data.menu_id !== row.menu_id) {
+                                                $.util.tab.close(row);
+                                            }
+                                        });
+                                        $.util.tab.open(row);
+                                    }
+                                    if (e.itemData.key === 'CloseAllOnTheRight') {
+                                        $.each(datasource, function(indexs, row) {
+                                            if (indexs > index) {
+                                                $.util.tab.close(row);
+                                            }
+                                        });
+                                        $.util.tab.open(row);
+                                    }
+                                    if (e.itemData.key === 'CloseAllOnTheLeft') {
+                                        $.each(datasource, function(indexs, row) {
+                                            if (indexs < index) {
+                                                $.util.tab.close(row);
+                                            }
+                                        });
+                                        $.util.tab.open(row);
+                                    }
+                                    if (e.itemData.key === 'Close') {
+                                        $.util.tab.close(data);
+                                    }
+                                }
+                            },
+                        });
+                    },
+                    itemTemplate: function (data, index, element) {
+                        $('<iframe/>', {
+                            class: 'd-flex flex h-100 w-100 block m-0',
+                            id: data.menu_id,
+                            onload: function () {
+                                setTimeout(function () {
+                                    $.util.loader.hide();
+                                }, 2000);
+                            }
+                        }).appendTo(element);
+                    },
+                    onTitleClick: function (e) {
+                        $.util.tab.open(e.itemData);
+                    },
+                    onSelectionChanged: $.common.delay(function (e) {
+                        $.ajax({
+                            url: '{% url 'core:menu-open' %}',
+                            type: 'POST',
+                            dataType: 'json',
+                            contentType: 'application/json',
+                            headers: {
+                                'AspNetData': true
+                            },
+                            data: JSON.stringify({
+                                opens: $.util.tab.datasource().data,
+                                active: e.addedItems[0],
+                            }),
+                            success: function (data, textStatus, jqXHR) { },
+                        });
+                    }, 500),
+                    onItemRendered: function(e) {
+                        e.itemElement.find('iframe#' + e.itemData.menu_id).attr('src', e.itemData.action);
+                    },
+                });
+                $('div.modulepanel').dxTabPanel('instance').element().dxSortable({
+                    moveItemOnDrop: true,
+                    filter: '.dx-tab',
+                    itemOrientation: 'horizontal',
+                    dragDirection: 'horizontal',
+                    onReorder: function (e) {
+                        var datasource = $.util.tab.datasource().data;
+                        var data = datasource.splice(e.fromIndex, 1)[0];
+                        datasource.splice(e.toIndex, 0, data);
+                        $('div.modulepanel').dxTabPanel('option', 'dataSource', datasource);
+                        $('div.modulepanel').dxTabPanel('option', 'selectedIndex', e.toIndex);
+                    }
+                });
+                var agents = ['Bonzi', 'Clippy', 'F1', 'Genie', 'Genius', 'Links', 'Merlin', 'Peedy', 'Rocky', 'Rover'];
+                function load(agent) {
+                    clippy.load(agent, function(e) {
+                        $.extend(window, { agent: $.extend(e, { name: agent }) });
+                        $(e._el).css({
+                            top: $(window).height() - ($(e._el).height() + 50),
+                            left: $(window).width() - ($(e._el).width() + 50),
+                        });
+                        e.show();
+                        $(e._el).on('mouseup', $.common.delay(function(ee) {
+                            $.extend(window.agent, {
+                                talks: [
+                                    'Saya suka mengganggu kamu',
+                                    'Jangan banyak tanya ya',
+                                    'Kerja yang serius, jangan bermain saja',
+                                    'Jangan lupa makan & minum...',
+                                    'Jaga kesehatan ya...',
+                                ],
+                            });
+                            e.speak('Hai... Saya ' + agent + ', ' + window.agent.talks[~~(Math.random() * window.agent.talks.length)]);
+                        }, 500));
+                        $('<div/>', { appendTo: 'body' }).dxContextMenu({
+                            dataSource: [{
+                                key: 'Change',
+                                text: '{{ _('Change') }}',
+                                items: $.lo.merge($.lo.map(agents, function fn(ee) {
+                                    return { key: ee, text: ee };
+                                }), [{ key: 'Random', text: '{{ _('Random') }}' }]),
+                            },
+                                { key: 'Speak', text: '{{ _('Speak') }}' },
+                                { key: 'Quit', text: '{{ _('Quit') }}' },
+                            ],
+                            width: 200,
+                            target: $(e._el),
+                            onItemClick: function(ee) {
+                                if (!ee.itemData.items) {
+                                    e.stop();
+                                    if ($.lo.includes(agents, ee.itemData.key)) {
+                                        if ($.lo.includes(e.animations(), 'Hide')) {
+                                            e.play('Hide');
+                                        }
+                                        $(e._el).fadeOut(2000, function() {
+                                            $(e._el).remove();
+                                            delete window.agent;
+                                            load(ee.itemData.key);
+                                        });
+                                    } else {
+                                        if (ee.itemData.key === 'Random') {
+                                            if ($.lo.includes(e.animations(), 'Hide')) {
+                                                e.play('Hide');
+                                            }
+                                            $(e._el).fadeOut(2000, function() {
+                                                $(e._el).remove();
+                                                delete window.agent;
+                                                load(agents[~~(Math.random() * agents.length)]);
+                                            });
+                                        }
+                                        if (ee.itemData.key === 'Speak') {
+                                            e.speak('Hai... Saya ' + agent + ', ' + window.agent.talks[~~(Math.random() * window.agent.talks.length)]);
+                                        }
+                                        if (ee.itemData.key === 'Quit') {
+                                            if ($.lo.includes(e.animations(), 'Hide')) {
+                                                e.play('Hide');
+                                            }
+                                            $(e._el).fadeOut(2000, function() {
+                                                $(e._el).remove();
+                                                delete window.agent;
+                                            });
+                                        }
+                                    }
+                                }
+                            },
+                        });
+                    });
+                }
+                setTimeout(function() {
+                    load(agents[~~(Math.random() * agents.length)]);
+                    setTimeout(function() {
+                        setInterval(function() {
+                            if (!window.agent) return;
+                            if (window.agent && window.agent.lastanimation && window.agent.lastanimation === 'Hide') {
+                                window.agent.play('Show');
+                            } else {
+                                var animate = window.agent.animations()[~~(Math.random() * window.agent.animations().length)];
+                                if ($.lo.includes(window.agent.animations(), ['Show', 'Hide'])) {
+                                    while (animate === 'Show') {
+                                        animate = window.agent.animations()[~~(Math.random() * window.agent.animations().length)];
+                                    }
+                                    window.agent.play(animate);
+                                } else {
+                                    while (animate === 'Hide') {
+                                        animate = window.agent.animations()[~~(Math.random() * window.agent.animations().length)];
+                                    }
+                                    window.agent.play(animate);
+                                }
+                            }
+                            $.extend(window.agent, { lastanimation: animate });
+                        }, 10000 + (Math.random() * 4000));
+                    }, 5000);
+                }, 5000);
+                {% if screensaver is not None %}
+                    $('div.screensaver#screensaver')
+                        .on('shown.bs.modal', function() {
+                        })
+                        .on('hidden.bs.modal', function() {
+                        });
+                    $.util.noActivity(function() {
+                        $('div.screensaver#screensaver').modal('show');
+                    });
+                {% endif %}
+                var hash = window.top.location.hash;
+                window.top.history.replaceState({}, document.title, window.top.location.href.split('#')[0]);
+                if (hash.startsWith('#/tab:')) {
+                    if ($('a[href=\'' + hash.replaceAll('#/tab:', '') + '\'][target=\''+ ['frame', 'iframe', 'tab'].join('\'], a[href=\'' + hash.replaceAll('#/tab:', '') + '\'][target=\'') + '\']').length) {
+                        $('a[href=\'' + hash.replaceAll('#/tab:', '') + '\'][target=\''+ ['frame', 'iframe', 'tab'].join('\'], a[href=\'' + hash.replaceAll('#/tab:', '') + '\'][target=\'') + '\']').trigger('click');
+                    } else {
+                        $('a[href=\'' + hash.replaceAll('#/tab:/', '') + '\'][target=\''+ ['frame', 'iframe', 'tab'].join('\'], a[href=\'' + hash.replaceAll('#/tab:/', '') + '\'][target=\'') + '\']').trigger('click');
+                    }
+                }
+                if (hash.startsWith('#/dialog:')) {
+                    if ($('a[href=\'' + hash.replaceAll('#/dialog:', '') + '\'][target=\'' + ['dialog', 'window', 'popup'].join('\'], a[href=\'' + hash.replaceAll('#/dialog:', '') + '\'][target=\'') + '\']').length) {
+                        $('a[href=\'' + hash.replaceAll('#/dialog:', '') + '\'][target=\'' + ['dialog', 'window', 'popup'].join('\'], a[href=\'' + hash.replaceAll('#/dialog:', '') + '\'][target=\'') + '\']').trigger('click');
+                    } else {
+                        $('a[href=\'' + hash.replaceAll('#/dialog:/', '') + '\'][target=\'' + ['dialog', 'window', 'popup'].join('\'], a[href=\'' + hash.replaceAll('#/dialog:', '') + '\'][target=\'') + '\']').trigger('click');
+                    }
+                }
+                if (!hash && $.util.tab.datasource().data.length) {
+                    var datasource = $.util.tab.datasource().data;
+                    var selected = datasource[datasource.length - 1];
+                    $('a[href=\'' + selected.action + '\']').trigger('click');
+                }
+                $('ul').each(function() {
+                    $(this).find('ul').each(function() {
+                        $(this).find('ul').each(function() {
+                            $(this).find('ul').each(function() {
+                                if (!$(this).has('li').length) {
+                                    $(this).parent().remove();
+                                    $(this).remove();
+                                }
+                            });
+                            if (!$(this).has('li').length) {
+                                $(this).parent().remove();
+                                $(this).remove();
+                            }
+                        });
+                        if (!$(this).has('li').length) {
+                            $(this).parent().remove();
+                            $(this).remove();
+                        }
+                    });
+                    if (!$(this).has('li').length) {
+                        $(this).parent().remove();
+                        $(this).remove();
+                    }
+                });
+                $('div.dropdown-menu.notification').on('show', function() {
+                    $.ajax({
+                        url: '{% url 'core:api:notification-delivered' %}',
+                        type: 'PUT',
+                        dataType: 'json',
+                        data: {},
+                        headers: {
+                            'AspNetData': true,
+                        },
+                        success: function(data, textStatus, jqXHR) {},
+                    });
+                });
+                var notification = $.util.ws(`${window.location.protocol.toLowerCase().startsWith('https') ? 'wss' : 'ws'}://${window.location.host}/ws/notification/`, [], {
+                    debug: {% if settings.DEBUG %}true{% else %}false{% endif %},
+                    msgpack: {% if settings.CHANNEL_MSGPACK %}true{% else %}false{% endif %},
+                    indicator: false,
+                });
+                notification.on('message', function(e) {
+                    $('div.list.list-row.notification').prepend($.lo.template($('[type=\'text/template\']#notification').html())({ notification: e }));
+                    $.each($('div.list.list-row.notification').find('div.list-item'), function(index, value) {
+                        if (index > 4) {
+                            value.remove();
+                        }
+                    });
+                    if (e.toast) {
+                        $.util.toast.create(e.notification_name, e.content, $.util.toast.icon.Info);
+                    }
+                });
+                var progress = $.util.ws(`${window.location.protocol.toLowerCase().startsWith('https') ? 'wss' : 'ws'}://${window.location.host}/ws/progress/?path={{ request.path }}`, [], {
+                    debug: {% if settings.DEBUG %}true{% else %}false{% endif %},
+                    msgpack: {% if settings.CHANNEL_MSGPACK %}true{% else %}false{% endif %},
+                    indicator: false,
+                });
+                progress.on('message', function(e) {
+                    if (e.show) {
+                        $.util.loader.show(e);
+                    } else {
+                        $.util.loader.hide();
+                    }
+                });
+                progress.on('open', function(e) {
+                    progress.send({
+                        path: '{{ request.path }}',
+                    });
+                });
+                var date = new Date('{% now 'Y-m-d H:i:s.u' %}');
+                var percentage_seconds = (date.getSeconds() / 60) * 100;
+                var degree_seconds = (percentage_seconds * 360) / 100;
+                $('div.second.hand').css('transform', `rotate(${degree_seconds}deg) translate(-50%, -50%)`);
+                var percentage_minutes = (date.getMinutes() / 60) * 100;
+                var degree_minutes = (percentage_minutes * 360) / 100;
+                $('div.minute.hand').css('transform', `rotate(${degree_minutes}deg) translate(-50%, -50%)`);
+                var percentage_hours = ((date.getHours() + (percentage_minutes / 100)) / 12) * 100;
+                var degree_hours = (percentage_hours * 360) / 100;
+                $('div.hour.hand').css('transform', `rotate(${degree_hours}deg) translate(-50%, -50%)`);
+                setInterval(function() {
+                    var date = new Date();
+                    var percentage_seconds = (date.getSeconds() / 60) * 100;
+                    var degree_seconds = (percentage_seconds * 360) / 100;
+                    $('div.second.hand').css('transform', `rotate(${degree_seconds}deg) translate(-50%, -50%)`);
+                }, 1000);
+                var clock = $.util.ws(`${window.location.protocol.toLowerCase().startsWith('https') ? 'wss' : 'ws'}://${window.location.host}/ws/clock/`, [], {
+                    debug: {% if settings.DEBUG %}true{% else %}false{% endif %},
+                    msgpack: {% if settings.CHANNEL_MSGPACK %}true{% else %}false{% endif %},
+                    indicator: false,
+                });
+                clock.on('message', function(e) {
+                    var date = new Date(e.datetime);
+                    var percentage_minutes = (date.getMinutes() / 60) * 100;
+                    var degree_minutes = (percentage_minutes * 360) / 100;
+                    $('div.minute.hand').css('transform', `rotate(${degree_minutes}deg) translate(-50%, -50%)`);
+                    var percentage_hours = ((date.getHours() + (percentage_minutes / 100)) / 12) * 100;
+                    var degree_hours = (percentage_hours * 360) / 100;
+                    $('div.hour.hand').css('transform', `rotate(${degree_hours}deg) translate(-50%, -50%)`);
+                });
+            });
+        </script>
+    {% endblock javascript %}
+

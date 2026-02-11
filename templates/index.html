@@ -1,0 +1,31 @@
+{% extends 'base/index.html' %}
+{% load environment %}
+{% load settings %}
+{% block identity %} index {% endblock identity %}
+{% block title %}
+    {% settingsdjango 'PROJECT.NAME' as systemname %}{% if systemname is not None %}
+        {{ systemname }}{% else %}
+        {{ settings.PROJECT.NAME }}
+    {% endif %}
+{% endblock %}
+{% block head %}
+    {{ block.super }}
+    {% include 'partial/common.html' with part='disableiframe' tag='open,close' %}
+    {% include 'partial/common.html' with part='header' %}
+    {% include 'partial/common.html' with part='application' type='css' %}
+    {{ 'TMP'|environment }}
+    {{ environment.TMP }}
+{% endblock head %}
+<style type="text/css" rel="stylesheet">{% block stylesheet %}{% endblock stylesheet %}</style>
+{% block body %}{% endblock body %}
+{% block footer %}
+    {% include 'partial/common.html' with part='footer' %}
+    {% include 'partial/vendor.html' with part='pace' %}
+{% endblock footer %}
+{% block javascript %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            {% include 'partial/common.html' with part='csfr' %}
+        });
+    </script>
+{% endblock javascript %}

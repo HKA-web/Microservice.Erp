@@ -1,0 +1,24 @@
+{% load hash %}
+{% load i18n %}
+{% load settings %}
+<!DOCTYPE html>
+<html lang="{{ language.code }}">
+<head>
+    {% block head %}
+        <title>{% block title %}{% endblock title %}</title>
+        <meta name="address" property="{{ request.get_full_path }}" content="{{ request.get_full_path }}"/>
+        {% block stylesheet %}{% endblock stylesheet %}
+        <script type="text/javascript">
+            {% block variable %}
+                window.debug = {% if settings.DEBUG %}true{% else %}false{% endif %};
+                window.systemname = {% settingsdjango 'PROJECT.NAME' as systemname %}'{% if systemname is not None %}{{ systemname }}{% else %}{{ settings.PROJECT.NAME }}{% endif %}';
+            {% endblock variable %}
+        </script>
+    {% endblock head %}
+</head>
+<body class="dx-viewport layout-column {% block identity %}{% endblock identity %}">
+{% block body %}{% endblock body %}
+{% block footer %}{% endblock footer %}
+{% block javascript %}{% endblock javascript %}
+</body>
+</html>

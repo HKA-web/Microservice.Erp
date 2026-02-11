@@ -1,0 +1,27 @@
+# ignore
+.idea/
+__pycache__/
+**/node_modules/
+assets/
+media/
+data/
+env/
+erpro.yaml
+bin/nginx/conf/erpro.conf
+bin/nginx/logs/
+bin/nginx/nginx.pid
+*.pyc
+*.egg
+*.old
+
+# ignore module here
+core/
+authentication/
+whatsapp/
+
+# force include here
+!bin/nodejs/node_modules/
+!library/**/data/
+!static/application/media/
+!static/vendor/**/media/
+!core/templates/core/screensaver/data/

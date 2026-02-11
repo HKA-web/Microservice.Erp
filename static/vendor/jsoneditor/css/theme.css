@@ -1,0 +1,126 @@
+div.jsoneditor,
+div.jsoneditor-menu {
+    border-color: #d2d2d2;
+}
+
+div.jsoneditor-menu {
+    background-color: #d2d2d2;
+}
+
+.jsoneditor-contextmenu .jsoneditor-menu li button.jsoneditor-selected,
+.jsoneditor-contextmenu .jsoneditor-menu li button.jsoneditor-selected:hover,
+.jsoneditor-contextmenu .jsoneditor-menu li button.jsoneditor-selected:focus {
+    background-color: #d2d2d2;
+}
+
+.jsoneditor-contextmenu .jsoneditor-menu {
+    border: 1px solid #ddd;
+    background: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    border-radius: 6px;
+}
+
+.jsoneditor-menu > button,
+.jsoneditor-menu > .jsoneditor-modes > button {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-left: 5px;
+}
+
+.jsoneditor-menu > button,
+.jsoneditor-menu > .jsoneditor-modes > button {
+    background-color: #a1a1a1;
+}
+
+div.jsoneditor,
+div.jsoneditor-menu,
+div.jsoneditor-tree {
+    border-radius: 4px;
+}
+
+.jsoneditor-contextmenu .jsoneditor-menu button.jsoneditor-default {
+    width: 130px;
+}
+
+.jsoneditor-contextmenu .jsoneditor-menu,
+.jsoneditor-contextmenu .jsoneditor-menu button {
+    width: 250px;
+}
+
+.jsoneditor-contextmenu .jsoneditor-menu button.jsoneditor-expand {
+    border-left: 0;
+}
+
+.jsoneditor-contextmenu .jsoneditor-menu {
+    padding: 5px;
+}
+
+.jsoneditor-contextmenu .jsoneditor-text {
+    padding: 4px 0 6px 24px;
+}
+
+div.jsoneditor td.jsoneditor-tree:has(div.jsoneditor-color),
+div.jsoneditor td.jsoneditor-tree:has(input[type=checkbox]) {
+    vertical-align: inherit;
+}
+
+.jsoneditor-tree::-webkit-scrollbar,
+.ace_scrollbar::-webkit-scrollbar {
+    width: 10px;
+}
+
+.jsoneditor-tree::-webkit-scrollbar-track,
+.ace_scrollbar::-webkit-scrollbar-track {
+    background: rgba(191, 191, 191, 0.15);
+}
+
+.jsoneditor-tree::-webkit-scrollbar-thumb,
+.ace_scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(191, 191, 191, 0.44);
+}
+
+.jsoneditor-tree::-webkit-scrollbar-thumb:hover,
+.ace_scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(191, 191, 191, .7);
+}
+
+.picker_wrapper button {
+    background-color: #009688;
+    background-image: unset;
+}
+
+.picker_wrapper.popup {
+    border-radius: 6px;
+}
+
+.picker_wrapper.popup,
+.picker_wrapper.popup .picker_arrow::before,
+.picker_wrapper.popup .picker_arrow::after {
+    background: #ffffff;
+}
+
+.picker_wrapper.popup,
+.picker_wrapper.popup .picker_arrow::before {
+    -webkit-box-shadow: 5px 5px 70px rgba(0, 0, 0, .4);
+    box-shadow: 5px 5px 70px rgba(0, 0, 0, .4);
+}
+
+.layout_default .picker_sample,
+.picker_sample::before {
+    border-radius: 6px;
+}
+
+.layout_default .picker_editor input {
+    border-radius: 6px;
+    text-align: center;
+    border: 1px solid #b5b5b5;
+}
+
+.layout_default .picker_sl,
+.layout_default .picker_slider {
+    border-radius: 5px;
+}
+
+.picker_slider .picker_selector {
+    border-radius: 90px;
+}

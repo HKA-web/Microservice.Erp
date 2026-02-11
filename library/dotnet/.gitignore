@@ -1,0 +1,5 @@
+# ignore
+__pycache__/
+project/bin/
+project/node_modules/
+project/obj/

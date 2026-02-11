@@ -1,0 +1,6 @@
+rabbitmqctl -n rabbit@localhost add_user erpro erpro
+rabbitmqctl -n rabbit@localhost set_user_tags erpro administrator
+rabbitmqctl -n rabbit@localhost set_permissions -p / erpro ".*" ".*" ".*"
+
+rabbitmq-plugins -n rabbit@localhost enable rabbitmq_management
+goto http://localhost:15672/

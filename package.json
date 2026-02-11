@@ -1,0 +1,25 @@
+{
+    "name": "core",
+    "version": "0.0.1",
+    "description": "Helper for development",
+    "private": true,
+    "license": "license.syifarahmat.id",
+    "devDependencies": {
+        "grunt": "^1.0.1",
+        "grunt-contrib-clean": "^2.0.1",
+        "grunt-contrib-compress": "^1.4.3",
+        "grunt-contrib-concat": "^1.0.1",
+        "grunt-contrib-copy": "^1.0.0",
+        "grunt-contrib-cssmin": "^2.2.1",
+        "grunt-contrib-htmlmin": "^2.4.0",
+        "grunt-contrib-uglify": "^3.1.0",
+        "grunt-contrib-watch": "^1.0.0",
+        "grunt-sass": "^3.1.0",
+        "node-sass": "^7.0.1",
+        "grunt-usemin": "^0.1.13",
+        "load-grunt-tasks": "^3.5.2"
+    },
+    "scripts": {},
+    "dependencies": {
+    }
+}

@@ -1,0 +1,25 @@
+# ignore
+.idea/
+__pycache__/
+**/node_modules/
+.cr/
+.vs/
+*.pyc
+*.egg
+*.old
+*.nupkg
+dashboarddesigner/bin/
+dashboarddesigner/publish/
+dashboarddesigner/obj/
+reportdesigner/bin/
+reportdesigner/publish/
+reportdesigner/obj/
+server/bin/
+server/publish/
+server/obj/
+nuget/
+publish/
+
+# ignore module here
+
+# force include

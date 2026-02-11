@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <OutputType>Library</OutputType>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <Title>ERPro.NET</Title>
+    <Copyright>ERPro</Copyright>
+    <PackageProjectUrl>erpro.local</PackageProjectUrl>
+  </PropertyGroup>
+  <ItemGroup>
+         <PackageReference Include="Syncfusion.DocIORenderer.Net.Core" Version="21.2.3" />
+         <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="21.2.3" />
+         <PackageReference Include="Syncfusion.EJ2.JavaScript" Version="21.2.3" />
+         <PackageReference Include="Syncfusion.EJ2.PdfViewer.AspNet.Core" Version="21.2.3" />
+         <PackageReference Include="Syncfusion.EJ2.SpellChecker.AspNet.Core" Version="21.2.3" />
+         <PackageReference Include="Syncfusion.EJ2.Spreadsheet.AspNet.Core" Version="21.2.3" />
+         <PackageReference Include="Syncfusion.EJ2.WordEditor.AspNet.Core" Version="21.2.3" />
+         <PackageReference Include="Syncfusion.XlsIORenderer.Net.Core" Version="21.2.3" />
+  </ItemGroup>
+
+</Project>

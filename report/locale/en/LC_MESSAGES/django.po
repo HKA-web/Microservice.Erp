@@ -1,0 +1,123 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-28 11:11+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\apis\views\schema.py:58
+#, python-format
+msgid "ModelSchema data %(count)s have been successfully deleted"
+msgstr ""
+
+#: .\apis\views\schema.py:64
+#, python-format
+msgid "ModelSchema %(model_schema_name)s have been successfully deleted"
+msgstr ""
+
+#: .\apis\views\schema.py:111
+#, python-format
+msgid "SchemaField data %(count)s have been successfully deleted"
+msgstr ""
+
+#: .\apis\views\schema.py:117
+#, python-format
+msgid "FieldSchema %(schema_field_name)s have been successfully deleted"
+msgstr ""
+
+#: .\apps.py:7
+msgid "Report"
+msgstr ""
+
+#: .\models\schema.py:22
+msgid "schema id"
+msgstr ""
+
+#: .\models\schema.py:23 .\models\schema.py:122
+msgid "Used for identity"
+msgstr ""
+
+#: .\models\schema.py:27
+msgid "schema name"
+msgstr ""
+
+#: .\models\schema.py:28 .\models\schema.py:126
+msgid "Used for view"
+msgstr ""
+
+#: .\models\schema.py:32
+msgid "database"
+msgstr ""
+
+#: .\models\schema.py:33
+msgid "Used for database alias"
+msgstr ""
+
+#: .\models\schema.py:37
+msgid "query"
+msgstr ""
+
+#: .\models\schema.py:38
+msgid "Used for auto generate table view"
+msgstr ""
+
+#: .\models\schema.py:43
+msgid "Used store history schema"
+msgstr ""
+
+#: .\models\schema.py:50
+msgid "Used store schema"
+msgstr ""
+
+#: .\models\schema.py:121
+msgid "schema field id"
+msgstr ""
+
+#: .\models\schema.py:125
+msgid "schema field name"
+msgstr ""
+
+#: .\models\schema.py:132
+msgid "schema"
+msgstr ""
+
+#: .\models\schema.py:133
+msgid "Used for linked key"
+msgstr ""
+
+#: .\models\schema.py:136
+msgid "class name"
+msgstr ""
+
+#: .\models\schema.py:137
+msgid "Used for django field class"
+msgstr ""
+
+#: .\models\schema.py:141
+msgid "kwargs"
+msgstr ""
+
+#: .\models\schema.py:142
+msgid "Used for propertie field"
+msgstr ""
+
+#: .\models\schema.py:147
+msgid "Used store history schema field"
+msgstr ""
+
+#: .\models\schema.py:155
+msgid "Used store schema field"
+msgstr ""

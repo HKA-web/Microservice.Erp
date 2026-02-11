@@ -1,0 +1,13 @@
+.famfamfam {
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    border-radius: 2px;
+    display: inline-block;
+    position: relative;
+    transition: all .3s;
+    box-sizing: content-box;
+}
+.fam-fix {
+    vertical-align: -2px;
+    margin: -2px 0;
+}

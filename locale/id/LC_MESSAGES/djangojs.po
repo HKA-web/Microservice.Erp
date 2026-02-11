@@ -1,0 +1,79 @@
+# Translation For ERPro System.
+# Copyright (C) 2023 Syifa Rahmat Dot ID
+# This file is distributed under the same license as the Syifa Rahmat Dot ID package.
+# Syifa Rahmat Dot ID syifarahmat.id@gmail.com, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 23.01.01\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-19 14:20+0700\n"
+"PO-Revision-Date: 2023-01-01 08:01+0700\n"
+"Last-Translator: Syifa Rahmat Dot ID syifarahmat.id@gmail.com\n"
+"Language-Team: Indonesia id@li.org\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.2\n"
+
+#: .\static\application\js\ajax.js:35
+msgid "Redirect"
+msgstr "Dialihkan"
+
+#: .\static\application\js\ajax.js:36
+msgid "Page will redirect"
+msgstr "Halaman akan dialihkan"
+
+#: .\static\application\js\application.js:149
+msgid "Updating..."
+msgstr "Memperbarui..."
+
+#: .\static\application\js\application.js:160
+#: .\static\application\js\util.js:495
+msgid "Warning"
+msgstr "Peringatan"
+
+#: .\static\application\js\application.js:160
+msgid "Disable %(key)s keyboard, Please reload manual"
+msgstr "Keboard %(key)s dinonaktifkan, Harap muat ulang manual"
+
+#: .\static\application\js\util.js:367 .\static\application\js\util.js:411
+msgid "Processing"
+msgstr "Mengolah"
+
+#: .\static\application\js\util.js:452 .\static\application\js\util.js:483
+#: .\static\application\js\util.js:510 .\static\application\js\util.js:538
+#: .\static\application\js\util.js:732 .\static\application\js\util.js:747
+msgid "Error"
+msgstr "Kesalahan"
+
+#: .\static\application\js\util.js:452
+msgid "Maximum top window, Can not get datasource tab"
+msgstr "Jendela atas maksimum, Tidak bisa mendapatkan tab sumber data"
+
+#: .\static\application\js\util.js:483
+msgid "Maximum top window, Can not open tab"
+msgstr "Jendela atas maksimum, Tidak dapat membuka tab"
+
+#: .\static\application\js\util.js:495
+msgid "Module %(menu_name)s contain dialog open, Please close first"
+msgstr "Modul %(menu_name)s berisi dialog terbuka, Silakan tutup terlebih dahulu"
+
+#: .\static\application\js\util.js:510
+msgid "Maximum top window, Can not reload tab"
+msgstr "Jendela atas maksimum, Tidak dapat memuat ulang tab"
+
+#: .\static\application\js\util.js:538
+msgid "Maximum top window, Can not close tab"
+msgstr "Jendela atas maksimum, Tidak dapat menutup tab"
+
+#: .\static\application\js\util.js:732
+msgid "Maximum top window, Can not get instance dialog"
+msgstr "Jendela atas maksimum, Tidak dapat mendapatkan dialog instance"
+
+#: .\static\application\js\util.js:747
+msgid "Maximum top window, Can not close dialog"
+msgstr "Jendela atas maksimum, Tidak dapat menutup dialog"

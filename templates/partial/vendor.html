@@ -1,0 +1,702 @@
+{% load static %}
+{% load random %}
+{% load settings %}
+{% if part in 'devextreme' %}
+    {% if type in 'css' %}
+        {# devextreme 'css' #}
+        {% if settings.DEBUG %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/devextreme/css/dx.diagram.css' %}" />
+        {% else %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/devextreme/css/dx.diagram.min.css' %}" />
+        {% endif %}
+        {% if settings.DEBUG %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/devextreme/css/dx.gantt.css' %}" />
+        {% else %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/devextreme/css/dx.gantt.min.css' %}" />
+        {% endif %}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/devextreme/css/dx.common.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/devextreme/css/dx.light.compact.css' %}" />
+    {% elif type in 'js' %}
+        {# devextreme 'js' #}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/cldr.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/cldr.min.js' %}"></script>
+        {% endif %}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/cldr/event.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/cldr/event.min.js' %}"></script>
+        {% endif %}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/cldr/supplemental.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/cldr/supplemental.min.js' %}"></script>
+        {% endif %}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/cldr/unresolved.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/cldr/unresolved.min.js' %}"></script>
+        {% endif %}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/globalize.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/globalize.min.js' %}"></script>
+        {% endif %}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/globalize/message.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/globalize/message.min.js' %}"></script>
+        {% endif %}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/globalize/number.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/globalize/number.min.js' %}"></script>
+        {% endif %}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/globalize/currency.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/globalize/currency.min.js' %}"></script>
+        {% endif %}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/globalize/date.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/globalize/date.min.js' %}"></script>
+        {% endif %}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/jszip.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/jszip.min.js' %}"></script>
+        {% endif %}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/dx.diagram.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/dx.diagram.min.js' %}"></script>
+        {% endif %}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/dx.gantt.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/dx.gantt.min.js' %}"></script>
+        {% endif %}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/dx.quill.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/dx.quill.min.js' %}"></script>
+        {% endif %}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/dx.all.debug.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/devextreme/js/dx.all.js' %}"></script>
+        {% endif %}
+        {% include 'partial/common.html' with part='localization' type='devextreme' %}
+    {% else %}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/aspnet/js/dx.aspnet.data.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/aspnet/js/dx.aspnet.data.min.js' %}"></script>
+        {% endif %}
+    {% endif %}
+{% endif %}
+{% if part in 'devexpressreport' %}
+    {% if type in 'css' %}
+        {# devextreme 'css' #}
+        {% if settings.DEBUG %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/devexpressrichedit/dx.richedit.css' %}" />
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/devexpressanalyticscore/css/dx-analytics.common.css' %}" />
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/devexpressanalyticscore/css/dx-analytics.light.css' %}" />
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/devexpressanalyticscore/css/dx-querybuilder.css' %}" />
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/devexpressreporting/css/dx-webdocumentviewer.css' %}" />
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/devexpressreporting/css/dx-reportdesigner.css' %}" />
+        {% else %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/devexpressrichedit/dx.richedit.css' %}" />
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/devexpressanalyticscore/css/dx-analytics.common.css' %}" />
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/devexpressanalyticscore/css/dx-analytics.light.css' %}" />
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/devexpressanalyticscore/css/dx-querybuilder.css' %}" />
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/devexpressreporting/css/dx-webdocumentviewer.css' %}" />
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/devexpressreporting/css/dx-reportdesigner.css' %}" />
+        {% endif %}
+    {% elif type in 'js' %}
+        {# devextreme 'js' #}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/ace/js/ace.js' %}"></script>
+            <script type="text/javascript" src="{% static 'vendor/ace/js/ext-language_tools.js' %}"></script>
+            <script type="text/javascript" src="{% static 'vendor/ace/js/snippets/text.js' %}"></script>
+            <script type="text/javascript" src="{% static 'vendor/devexpressrichedit/dx.richedit.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'vendor/devexpressanalyticscore/js/dx-analytics-core.js' %}"></script>
+            <script type="text/javascript" src="{% static 'vendor/devexpressanalyticscore/js/dx-querybuilder.js' %}"></script>
+            <script type="text/javascript" src="{% static 'vendor/devexpressreporting/js/dx-webdocumentviewer.js' %}"></script>
+            <script type="text/javascript" src="{% static 'vendor/devexpressreporting/js/dx-reportdesigner.js' %}"></script>
+        {% else %}
+        {% endif %}
+    {% else %}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/aspnet/js/dx.aspnet.data.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/aspnet/js/dx.aspnet.data.min.js' %}"></script>
+        {% endif %}
+    {% endif %}
+{% endif %}
+{% if part in '$(' %}
+    {# $( 'js' #}
+    {% if settings.DEBUG %}
+        <script type="text/javascript" src="{% static 'vendor/$(/js/$(.js' %}"></script>
+    {% else %}
+        <script type="text/javascript" src="{% static 'vendor/$(/js/$(.min.js' %}"></script>
+    {% endif %}
+{% endif %}
+{% if part in 'knockout' %}
+    {# knockout 'js' #}
+    {% if settings.DEBUG %}
+        <script type="text/javascript" src="{% static 'vendor/devextreme/js/knockout.latest.debug.js' %}"></script>
+    {% else %}
+        <script type="text/javascript" src="{% static 'vendor/devextreme/js/knockout.latest.js' %}"></script>
+    {% endif %}
+{% endif %}
+{% if part in 'md5' %}
+    {# $(.md5 'js' #}
+    <script type="text/javascript" src="{% static 'vendor/$(md5/js/$(.md5.js' %}"></script>
+{% endif %}
+{% if part in 'normalize' %}
+    {# normalize 'css' #}
+    {% if settings.DEBUG %}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/normalize/css/normalize.css' %}" />
+    {% else %}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/normalize/css/normalize.min.css' %}" />
+    {% endif %}
+{% endif %}
+{% if part in 'modernizr' %}
+    {# modernizr 'js' #}
+    {% if settings.DEBUG %}
+        <script type="text/javascript" src="{% static 'vendor/modernizr/js/modernizr.js' %}"></script>
+    {% else %}
+        <script type="text/javascript" src="{% static 'vendor/modernizr/js/modernizr.min.js' %}"></script>
+    {% endif %}
+{% endif %}
+{% if part in 'particles' %}
+    {# particles 'js' #}
+    {% if settings.DEBUG %}
+        <script type="text/javascript" src="{% static 'vendor/particles/js/particles.js' %}"></script>
+    {% else %}
+        <script type="text/javascript" src="{% static 'vendor/particles/js/particles.min.js' %}"></script>
+    {% endif %}
+{% endif %}
+{% if part in 'animate' %}
+    {# animate 'css' #}
+    {% if settings.DEBUG %}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/animate/css/animate.css' %}" />
+    {% else %}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/animate/css/animate.min.css' %}" />
+    {% endif %}
+{% endif %}
+{% if part in 'fontawesome' %}
+    {# fontawesome 'css' #}
+    {% if settings.DEBUG %}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/fontawesome/css/all.css' %}" />
+    {% else %}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/fontawesome/css/all.min.css' %}" />
+    {% endif %}
+    {% if settings.DEBUG %}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/fontawesomeanimation/css/fontawesome.animation.css' %}" />
+    {% else %}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/fontawesomeanimation/css/fontawesome.animation.min.css' %}" />
+    {% endif %}
+{% endif %}
+{% if part in 'typeahead' %}
+    {# typeahead 'js' #}
+    {% if settings.DEBUG %}
+        <script type="text/javascript" src="{% static 'vendor/typeahead/js/typeahead.bundle.js' %}"></script>
+    {% else %}
+        <script type="text/javascript" src="{% static 'vendor/typeahead/js/typeahead.bundle.min.js' %}"></script>
+    {% endif %}
+{% endif %}
+{% if part in 'famfamfam' %}
+    {% if settings.DEBUG %}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/famfamfam/css/famfamfam.css' %}" />
+    {% else %}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/famfamfam/css/famfamfam.min.css' %}" />
+    {% endif %}
+    {% if 'flags' in type %}
+        {# famfamfam 'flags' #}
+        {% if settings.DEBUG %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/famfamfam/css/flags.css' %}" />
+        {% else %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/famfamfam/css/flags.min.css' %}" />
+        {% endif %}
+    {% endif %}
+    {% if 'mini' in type %}
+        {# famfamfam 'mini' #}
+        {% if settings.DEBUG %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/famfamfam/css/mini.css' %}" />
+        {% else %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/famfamfam/css/mini.min.css' %}" />
+        {% endif %}
+    {% endif %}
+    {% if 'silk' in type %}
+        {# famfamfam 'silk' #}
+        {% if settings.DEBUG %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/famfamfam/css/silk.css' %}" />
+        {% else %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/famfamfam/css/silk.min.css' %}" />
+        {% endif %}
+    {% endif %}
+    {% if 'vendor' in type %}
+        {# famfamfam 'vendor' #}
+        {% if settings.DEBUG %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/famfamfam/css/vendor.css' %}" />
+        {% else %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/famfamfam/css/vendor.min.css' %}" />
+        {% endif %}
+    {% endif %}
+{% endif %}
+{% if part in 'materialicons' %}
+    {% if settings.DEBUG %}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/materialicons/iconfont/material-icons.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/materialicons/css/material-icons.css' %}" />
+    {% else %}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/materialicons/iconfont/material-icons.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/materialicons/css/material-icons.min.css' %}" />
+    {% endif %}
+{% endif %}
+{% if part in 'weathericons' %}
+    {% if settings.DEBUG %}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/weathericons/css/weather-icons.min.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/weathericons/css/weather-icons-wind.min.css' %}" />
+    {% else %}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/weathericons/css/weather-icons.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/weathericons/css/weather-icons-wind.css' %}" />
+    {% endif %}
+{% endif %}
+{% if part in 'bootstrap' %}
+    {% if type in 'css' %}
+        {# bootstrap 'css' #}
+        <link type="text/css" rel="stylesheet" href="{% static 'application/css/bootstrap.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/bootstrapicons/css/bootstrapicons.css' %}" />
+        {% if settings.DEBUG %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/bootstraptoaster/css/bootstraptoaster.css' %}" />
+        {% else %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/bootstraptoaster/css/bootstraptoaster.min.css' %}" />
+        {% endif %}
+    {% else %}
+        {# bootstrap 'js' #}
+        <script type="text/javascript" src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/bootstraptoaster/js/bootstraptoaster.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/bootstraptoaster/js/bootstraptoaster.min.js' %}"></script>
+        {% endif %}
+        <script type="text/javascript">
+            Toast.setPlacement(TOAST_PLACEMENT.TOP_RIGHT);
+            Toast.setTheme(TOAST_THEME.LIGHT);
+            Toast.setMaxCount(6);
+            Toast.enableQueue(true);
+            Toast.enableTimers(TOAST_TIMERS.COUNTDOWN);
+        </script>
+    {% endif %}
+{% endif %}
+{% if part in 'popper' %}
+    {# popper 'js' #}
+    <script type="text/javascript" src="{% static 'vendor/popper/js/popper.min.js' %}"></script>
+{% endif %}
+{% if part in 'pace' %}
+    {% if type in 'css' %}
+        {# pace 'js' #}
+        <script type="text/javascript" src="{% static 'vendor/pace/js/pace.min.js' %}"></script>
+    {% else %}
+        {# pace 'css' #}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/pace/css/flash.css' %}" />
+    {% endif %}
+{% endif %}
+{% if part in 'jsonfn' %}
+    {# jsonfn 'js' #}
+    <script type="text/javascript" src="{% static 'vendor/jsonfn/js/jsonfn.js' %}"></script>
+{% endif %}
+{% if part in 'lodash' %}
+    {# lodash 'js' #}
+    {% if settings.DEBUG %}
+        <script type="text/javascript" src="{% static 'vendor/lodash/js/lodash.js' %}"></script>
+    {% else %}
+        <script type="text/javascript" src="{% static 'vendor/lodash/js/lodash.min.js' %}"></script>
+    {% endif %}
+    <script type="text/javascript">
+        /* template format, value <tpl= object.key tpl/>, condition and other <tpl if (true) tpl/>,  */
+        _.templateSettings.escape = /<tpl-([\s\S]+?)tpl\/>/g;
+        _.templateSettings.evaluate = /<tpl([\s\S]+?)tpl\/>/g;
+        _.templateSettings.interpolate = /<tpl=([\s\S]+?)tpl\/>/g;
+    </script>
+{% endif %}
+{% if part in 'moment' %}
+    {# moment 'js' #}
+    {% if settings.DEBUG %}
+        <script type="text/javascript" src="{% static 'vendor/moment/js/moment.withlocales.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/moment/js/moment.timezone.js' %}"></script>
+    {% else %}
+        <script type="text/javascript" src="{% static 'vendor/moment/js/moment.withlocales.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/moment/js/moment.timezone.min.js' %}"></script>
+    {% endif %}
+    <script type="text/javascript">
+        /* console.log(moment(new Date()).format('Z')) */
+        {% if request.user.timezone %}
+            moment.tz.setDefault('{{ request.user.timezone }}');
+        {% else %}
+            moment.tz.setDefault('{{ settings.TIME_ZONE }}');
+        {% endif %}
+    </script>
+{% endif %}
+{% if part in 'i18n' %}
+    {# i18n 'js' #}
+    <script type="text/javascript" src="{% url 'i18n-js' %}?dc={% randomstring 10 as dc %}{{ dc }}"></script>
+{% endif %}
+{% if part in 'reverse' %}
+    {# reverse 'js' #}
+    <script type="text/javascript" src="{% url 'reverse-js' %}"></script>
+{% endif %}
+{% if part in 'cookie' %}
+    {# cookie 'js' #}
+    {% if settings.DEBUG %}
+        <script type="text/javascript" src="{% static 'vendor/cookie/js/js.cookie.js' %}"></script>
+    {% else %}
+        <script type="text/javascript" src="{% static 'vendor/cookie/js/js.cookie.min.js' %}"></script>
+    {% endif %}
+{% endif %}
+{% if part in 'searchable' %}
+    {# searchable 'js' #}
+    {% if settings.DEBUG %}
+        <script type="text/javascript" src="{% static 'vendor/searchable/js/$(.searchable.js' %}"></script>
+    {% else %}
+        <script type="text/javascript" src="{% static 'vendor/searchable/js/$(.searchable.min.js' %}"></script>
+    {% endif %}
+{% endif %}
+{% if part in 'axios' %}
+    {# axios 'js' #}
+    {% if settings.DEBUG %}
+        <script type="text/javascript" src="{% static 'vendor/axios/js/axios.js' %}"></script>
+    {% else %}
+        <script type="text/javascript" src="{% static 'vendor/axios/js/axios.min.js' %}"></script>
+    {% endif %}
+{% endif %}
+{% if part in 'lightbox' %}
+    {% if type in 'css' %}
+        {# lightbox 'css' #}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/lightbox/css/lightbox.css' %}" />
+    {% else %}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/lightbox/js/lightbox.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/lightbox/js/lightbox.min.js' %}"></script>
+        {% endif %}
+    {% endif %}
+{% endif %}
+{% if part in 'jspdf' %}
+    {# jspdf 'js' #}
+    {% if settings.DEBUG %}
+        <script type="text/javascript" src="{% static 'vendor/devextreme/js/jspdf.umd.js' %}"></script>
+    {% else %}
+        <script type="text/javascript" src="{% static 'vendor/devextreme/js/jspdf.umd.min.js' %}"></script>
+    {% endif %}
+    {% if settings.DEBUG %}
+        <script type="text/javascript" src="{% static 'vendor/devextreme/js/jspdf.plugin.autotable.js' %}"></script>
+    {% else %}
+        <script type="text/javascript" src="{% static 'vendor/devextreme/js/jspdf.plugin.autotable.min.js' %}"></script>
+    {% endif %}
+{% endif %}
+{% if part in 'exceljs' %}
+    {# exceljs 'js' #}
+    {% if settings.DEBUG %}
+        <script type="text/javascript" src="{% static 'vendor/devextreme/js/exceljs.js' %}"></script>
+    {% else %}
+        <script type="text/javascript" src="{% static 'vendor/devextreme/js/exceljs.min.js' %}"></script>
+    {% endif %}
+{% endif %}
+{% if part in 'filesaver' %}
+    {# filesaver 'js' #}
+    {% if settings.DEBUG %}
+        <script type="text/javascript" src="{% static 'vendor/filesaver/js/filesaver.js' %}"></script>
+    {% else %}
+        <script type="text/javascript" src="{% static 'vendor/filesaver/js/filesaver.min.js' %}"></script>
+    {% endif %}
+{% endif %}
+{% if part in 'screenfull' %}
+    {# screenfull 'js' #}
+    <script type="text/javascript" src="{% static 'vendor/screenfull/js/screenfull.js' %}"></script>
+    <script type="text/javascript" src="{% static 'application/js/screenfull.js' %}"></script>
+{% endif %}
+{% if part in 'subset' %}
+    {# subset 'js' #}
+    {% if settings.DEBUG %}
+        <script type="text/javascript" src="{% static 'vendor/subset/js/$(.dataSubset.js' %}"></script>
+    {% else %}
+        <script type="text/javascript" src="{% static 'vendor/subset/js/$(.dataSubset.min.js' %}"></script>
+    {% endif %}
+{% endif %}
+{% if part in 'preload' %}
+    {# preload 'js' #}
+    {% if settings.DEBUG %}
+        <script type="text/javascript" src="{% static 'vendor/preload/js/$(.preload.js' %}"></script>
+    {% else %}
+        <script type="text/javascript" src="{% static 'vendor/preload/js/$(.preload.min.js' %}"></script>
+    {% endif %}
+    <script type="text/javascript">
+        jQuery('img:not([data-nopreload])').preload({
+            placeholder: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAACXBIWXMAAAsSAAALEgHS3X78AAABCFBMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQjDcoAAAAWHRSTlMAKUNlaVxkAV5dCigwLjtoFyJhYmNfWgIMYBhnHwsjDQgcBlcJPCoyJRsSOkZZMSEPVlRIRUdbKxQvNUJSBWYkLGpKM1EdQQMRTjRYOUw2LRNJPxZEbD1rk/aK9gAAAgJJREFUSMftlld32kAQhUeWtjlgJyutEL03G4h7r+m9l///T7JaDCoIWHHykJPDRQ+smE9z76wEAKy11r8uklJ/rXHN6Bgp1Dn1As/w2TKtFLqxdoFM4fObrZ7xSFNG78Jsh+CsVUqTcmd7KwJXIKdmqDHpHBSKUfiJv+obfZ1thcfbcRgax47tHF2vBreLCKFiMEd9uAKtJmWMif0GrACXhz5Mm7WVbH/FJ+wEH88UV/c04C+uaZvDnXjlUypOI3NIgnNQvbh858XZN0ww52WYToKTh5x7yxET7zdhKUziVyDwASNKkTOA1J1lYBv5W4DwefD5Yjg4X3UFkxsoj3whdFov8zMbUUblwfIHDa3OhWxLLQg8l4FlX59GzqvlMIESNw/KanZ1zphiqYrdmZbMgQl4rnCdQ/9dq5lnVLHKOKVnk5q5tg9lTIS7cnnkoAmrjPMXrxd2JtBVMRmvQ2YSmE6Ntx+K5twk/XFMxq9uH7wGNENOb1yV3Lm2r2LKl8hH2fGl0J6aZDK8MY6pbosYq2LbH+fZJnAX7Kvi6QyNP/l1SY/kd0Fn2kVgKbskCxO+DK6vOFrEKkNiWIYk+JftoqVy+WAWvoXMb2xqCP/chUIUvi9BdpTR0qgb/60q3nnepqbKXsUMw6N7bmNt2dz6Fnr8z35spNHloL7+G7fWf60/kuM+KcmtX3oAAAAASUVORK5CYII',
+            notFound: 'data:image/png;base64,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',
+        });
+    </script>
+{% endif %}
+{% if part in 'timeago' %}
+    {# timeago 'js' #}
+    {% if settings.DEBUG %}
+        <script type="text/javascript" src="{% static 'vendor/timeago/js/javascript.timeago.js' %}"></script>
+    {% else %}
+        <script type="text/javascript" src="{% static 'vendor/timeago/js/javascript.timeago.min.js' %}"></script>
+    {% endif %}
+    <script type="text/javascript" src="{% static 'vendor/timeago/js/id.js' %}"></script>
+{% endif %}
+{% if part in 'mediaelement' %}
+    {% if type in 'css' %}
+        {# mediaelement 'css' #}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/mediaelement/css/mediaelement.player.css' %}" />
+    {% else %}
+        {# mediaelement 'js' #}
+        <script type="text/javascript" src="{% static 'vendor/mediaelement/js/mediaelement.andplayer.js' %}"></script>
+    {% endif %}
+{% endif %}
+{% if part in 'ace' %}
+    {% if type in 'js' %}
+        {# ace 'js' #}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/ace/js/ace.js' %}"></script>
+            <script type="text/javascript" src="{% static 'vendor/ace/js/ext-language_tools.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/ace/js.min/ace.js' %}"></script>
+            <script type="text/javascript" src="{% static 'vendor/ace/js.min/ext-language_tools.js' %}"></script>
+        {% endif %}
+    {% endif %}
+    {% if type in 'noconflict' %}
+        {# ace 'noconflict' #}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/ace/js.noconflict/ace.js' %}"></script>
+            <script type="text/javascript" src="{% static 'vendor/ace/js.noconflict/ext-language_tools.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/ace/js.min.noconflict/ace.js' %}"></script>
+            <script type="text/javascript" src="{% static 'vendor/ace/js.min.noconflict/ext-language_tools.js' %}"></script>
+        {% endif %}
+    {% endif %}
+{% endif %}
+{% if part in 'jsoneditor' %}
+    {% if type in 'js' %}
+        {# jsoneditor 'js' #}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/jsoneditor/js/jsoneditor.js' %}"></script>
+            <script type="text/javascript" src="{% static 'vendor/slimscroll/js/slimscroll.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/jsoneditor/js/jsoneditor.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'vendor/slimscroll/js/slimscroll.min.js' %}"></script>
+        {% endif %}
+    {% endif %}
+    {% if type in 'css' %}
+        {# jsoneditor 'css' #}
+        {% if settings.DEBUG %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/jsoneditor/css/jsoneditor.css' %}" />
+        {% else %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/jsoneditor/css/jsoneditor.min.css' %}" />
+        {% endif %}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/jsoneditor/css/theme.css' %}" />
+    {% endif %}
+    {% if type in 'minimalist' %}
+        {# jsoneditor 'minimalist' #}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/jsoneditor/js/jsoneditor.minimalist.js' %}"></script>
+            <script type="text/javascript" src="{% static 'vendor/slimscroll/js/slimscroll.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/jsoneditor/js/jsoneditor.minimalist.min.js' %}"></script>
+            <script type="text/javascript" src="{% static 'vendor/slimscroll/js/slimscroll.min.js' %}"></script>
+        {% endif %}
+    {% endif %}
+{% endif %}
+{% if part in 'vanillapicker' %}
+    {% if type in 'js' %}
+        {# vanillapicker 'js' #}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/vanillapicker/js/vanilla.picker.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/vanillapicker/js/vanilla.picker.min.js' %}"></script>
+        {% endif %}
+    {% endif %}
+    {% if type in 'css' %}
+        {# vanillapicker 'css' #}
+        {% if settings.DEBUG %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/vanillapicker/css/vanilla.picker.csp.css' %}" />
+        {% else %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/vanillapicker/css/vanilla.picker.csp.min.css' %}" />
+        {% endif %}
+    {% endif %}
+{% endif %}
+{% if part in 'websocket' %}
+    {% if settings.DEBUG %}
+        <script type="text/javascript" src="{% static 'vendor/websocket/websocket.js' %}"></script>
+    {% else %}
+        <script type="text/javascript" src="{% static 'vendor/websocket/websocket.min.js' %}"></script>
+    {% endif %}
+    <script type="text/javascript" src="{% static 'vendor/msgpack/js/msgpack.min.js' %}"></script>
+{% endif %}
+{% if part in 'clippy' %}
+    {% if type in 'css' %}
+        {# clippy 'css' #}
+        {% if settings.DEBUG %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/clippy/css/clippy.css' %}" />
+        {% else %}
+            <link type="text/css" rel="stylesheet" href="{% static 'vendor/clippy/css/clippy.min.css' %}" />
+        {% endif %}
+    {% else %}
+        {# clippy 'js' #}
+        {% if settings.DEBUG %}
+            <script type="text/javascript" src="{% static 'vendor/clippy/js/clippy.js' %}"></script>
+        {% else %}
+            <script type="text/javascript" src="{% static 'vendor/clippy/js/clippy.min.js' %}"></script>
+        {% endif %}
+    {% endif %}
+{% endif %}
+{% if part in 'syncfusion.spreadsheet' %}
+    {% if type in 'css' %}
+        {# syncfusion 'css' #}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/base/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/buttons/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/popups/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/splitbuttons/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/inputs/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/inplaceeditor/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/lists/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/dropdowns/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/navigations/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/pdfviewer/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/calendars/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/filemanager/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/grids/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/spreadsheet/bootstrap4.css' %}" />
+        {% if settings.DEBUG %}
+        {% else %}
+        {% endif %}
+    {% else %}
+        {# syncfusion 'js' #}
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/base.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/buttons.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/popups.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/splitbuttons.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/inputs.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/inplaceeditor.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/data.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/lists.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/dropdowns.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/navigations.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/excelexport.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/pdfexport.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/calendars.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/compression.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/fileutils.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/grids.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/svgbase.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/charts.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/spreadsheet.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/supplemental.js' %}"></script>
+        {% if settings.DEBUG %}
+        {% else %}
+        {% endif %}
+    {% endif %}
+{% endif %}
+{% if part in 'syncfusion.pdfviewer' %}
+    {% if type in 'css' %}
+        {# syncfusion 'css' #}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/base/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/buttons/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/popups/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/splitbuttons/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/inputs/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/inplaceeditor/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/lists/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/dropdowns/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/navigations/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/pdfviewer/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/calendars/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/filemanager/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/grids/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/pdfviewer/bootstrap4.css' %}" />
+        {% if settings.DEBUG %}
+        {% else %}
+        {% endif %}
+    {% else %}
+        {# syncfusion 'js' #}
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/base.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/buttons.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/popups.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/splitbuttons.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/inputs.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/data.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/lists.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/dropdowns.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/navigations.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/excelexport.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/pdfexport.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/calendars.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/inplaceeditor.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/filemanager.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/compression.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/fileutils.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/grids.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/svgbase.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/charts.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/richtexteditor.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/drawings.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/layouts.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/pdf.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/pdfviewer.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/supplemental.js' %}"></script>
+        {% if settings.DEBUG %}
+        {% else %}
+        {% endif %}
+    {% endif %}
+{% endif %}
+{% if part in 'syncfusion.documenteditor' %}
+    {% if type in 'css' %}
+        {# syncfusion 'css' #}
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/base/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/buttons/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/popups/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/splitbuttons/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/inputs/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/inplaceeditor/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/lists/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/dropdowns/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/navigations/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/pdfviewer/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/calendars/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/filemanager/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/grids/bootstrap4.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'vendor/syncfusion/css/documenteditor/bootstrap4.css' %}" />
+        {% if settings.DEBUG %}
+        {% else %}
+        {% endif %}
+    {% else %}
+        {# syncfusion 'js' #}
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/base.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/data.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/svgbase.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/fileutils.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/compression.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/pdfexport.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/buttons.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/popups.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/splitbuttons.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/inputs.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/lists.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/navigations.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/dropdowns.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/calendars.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/charts.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/officechart.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/documenteditor.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/syncfusion/js/supplemental.js' %}"></script>
+        {% if settings.DEBUG %}
+        {% else %}
+        {% endif %}
+    {% endif %}
+{% endif %}

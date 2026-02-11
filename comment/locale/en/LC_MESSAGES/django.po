@@ -1,0 +1,472 @@
+# Translation For ERPro System.
+# Copyright (C) 2023 Syifa Rahmat Dot ID
+# This file is distributed under the same license as the Syifa Rahmat Dot ID package.
+# Syifa Rahmat Dot ID syifarahmat.id@gmail.com, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 23.01.01\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-22 14:10+0700\n"
+"PO-Revision-Date: 2023-01-01 08:01+0700\n"
+"Last-Translator: Syifa Rahmat Dot ID syifarahmat.id@gmail.com\n"
+"Language-Team: Indonesia id@li.org\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\apps.py:16 .\templates\comment\index.html:8
+msgid "Comment"
+msgstr ""
+
+#: .\apps.py:66
+msgid "%A, %d %b %Y, %H.%M.%S.{:03}"
+msgstr ""
+
+#: .\apps.py:72
+msgid "Empty"
+msgstr ""
+
+#: .\apps.py:73
+msgid "to"
+msgstr ""
+
+#: .\constants\messages.py:13
+msgid "Comment flagged"
+msgstr ""
+
+#: .\constants\messages.py:14
+msgid "Comment flag removed"
+msgstr ""
+
+#: .\constants\messages.py:18
+msgid "Your reaction has been updated successfully"
+msgstr ""
+
+#: .\constants\messages.py:22
+msgid "Unflagged"
+msgstr ""
+
+#: .\constants\messages.py:23
+msgid "Flagged"
+msgstr ""
+
+#: .\constants\messages.py:24
+msgid "Flag rejected by the moderator"
+msgstr ""
+
+#: .\constants\messages.py:25
+msgid "Comment modified by the author"
+msgstr ""
+
+#: .\forms\comment.py:13 .\forms\flag.py:13 .\forms\reaction.py:13
+msgid "Comment ID"
+msgstr ""
+
+#: .\forms\comment.py:16 .\forms\flag.py:16 .\forms\reaction.py:16
+msgid "Your comment id"
+msgstr ""
+
+#: .\forms\comment.py:23
+msgid "Parent Comment"
+msgstr ""
+
+#: .\forms\comment.py:26
+msgid "Your parent comment"
+msgstr ""
+
+#: .\forms\comment.py:33
+msgid "Content Type"
+msgstr ""
+
+#: .\forms\comment.py:36
+msgid "Your content type"
+msgstr ""
+
+#: .\forms\comment.py:42
+msgid "Object ID"
+msgstr ""
+
+#: .\forms\comment.py:45
+msgid "Your object id"
+msgstr ""
+
+#: .\forms\comment.py:51
+msgid "Message"
+msgstr ""
+
+#: .\forms\comment.py:54
+msgid "Your message"
+msgstr ""
+
+#: .\forms\flag.py:23
+msgid "Reason"
+msgstr ""
+
+#: .\forms\flag.py:26
+msgid "Your reason"
+msgstr ""
+
+#: .\forms\reaction.py:23
+msgid "Reaction"
+msgstr ""
+
+#: .\forms\reaction.py:26
+msgid "Your reaction type"
+msgstr ""
+
+#: .\models\comment.py:30
+msgid "comment id"
+msgstr ""
+
+#: .\models\comment.py:31 .\models\comment_flag.py:38
+#: .\models\comment_flag.py:94 .\models\comment_reaction.py:28
+#: .\models\comment_reaction.py:95
+msgid "Used for identity"
+msgstr ""
+
+#: .\models\comment.py:39
+msgid "parent"
+msgstr ""
+
+#: .\models\comment.py:40
+msgid "Used for hierarchy parent id"
+msgstr ""
+
+#: .\models\comment.py:47 .\models\comment_flag.py:107
+#: .\models\comment_reaction.py:108
+msgid "user"
+msgstr ""
+
+#: .\models\comment.py:48
+msgid "Used for linked key author comment"
+msgstr ""
+
+#: .\models\comment.py:53
+msgid "content type"
+msgstr ""
+
+#: .\models\comment.py:54
+msgid "Used for linked key model comment"
+msgstr ""
+
+#: .\models\comment.py:59
+msgid "object id"
+msgstr ""
+
+#: .\models\comment.py:60
+msgid "Used for linked key commented object"
+msgstr ""
+
+#: .\models\comment.py:64
+msgid "message"
+msgstr ""
+
+#: .\models\comment.py:68
+msgid "read only"
+msgstr ""
+
+#: .\models\comment.py:69
+msgid "Used for disable modification"
+msgstr ""
+
+#: .\models\comment.py:76
+msgid "Used store history comment"
+msgstr ""
+
+#: .\models\comment.py:83
+msgid "Used store comment"
+msgstr ""
+
+#: .\models\comment.py:112
+msgid "Jan"
+msgstr ""
+
+#: .\models\comment.py:113
+msgid "Feb"
+msgstr ""
+
+#: .\models\comment.py:114
+msgid "Mar"
+msgstr ""
+
+#: .\models\comment.py:115
+msgid "Apr"
+msgstr ""
+
+#: .\models\comment.py:116
+msgid "May"
+msgstr ""
+
+#: .\models\comment.py:117
+msgid "Jun"
+msgstr ""
+
+#: .\models\comment.py:118
+msgid "Jul"
+msgstr ""
+
+#: .\models\comment.py:119
+msgid "Aug"
+msgstr ""
+
+#: .\models\comment.py:120
+msgid "Sep"
+msgstr ""
+
+#: .\models\comment.py:121
+msgid "Oct"
+msgstr ""
+
+#: .\models\comment.py:122
+msgid "Nov"
+msgstr ""
+
+#: .\models\comment.py:123
+msgid "Dec"
+msgstr ""
+
+#: .\models\comment.py:124
+msgid "Sunday"
+msgstr ""
+
+#: .\models\comment.py:125
+msgid "Monday"
+msgstr ""
+
+#: .\models\comment.py:126
+msgid "Tuesday"
+msgstr ""
+
+#: .\models\comment.py:127
+msgid "Wednesday"
+msgstr ""
+
+#: .\models\comment.py:128
+msgid "Thursday"
+msgstr ""
+
+#: .\models\comment.py:129
+msgid "Friday"
+msgstr ""
+
+#: .\models\comment.py:130
+msgid "Saturday"
+msgstr ""
+
+#: .\models\comment.py:131
+msgid "Changed"
+msgstr ""
+
+#: .\models\comment.py:132
+msgid "To"
+msgstr ""
+
+#: .\models\comment.py:133
+msgid "True"
+msgstr ""
+
+#: .\models\comment.py:134
+msgid "False"
+msgstr ""
+
+#: .\models\comment_flag.py:37 .\models\comment_flag.py:93
+#: .\models\comment_reaction.py:27 .\models\comment_reaction.py:94
+msgid "id"
+msgstr ""
+
+#: .\models\comment_flag.py:44 .\models\comment_reaction.py:34
+msgid "comment"
+msgstr ""
+
+#: .\models\comment_flag.py:45 .\models\comment_reaction.py:35
+msgid "Used for linked key comment"
+msgstr ""
+
+#: .\models\comment_flag.py:49
+msgid "count"
+msgstr ""
+
+#: .\models\comment_flag.py:50
+msgid "Used for count flag"
+msgstr ""
+
+#: .\models\comment_flag.py:55
+msgid "state"
+msgstr ""
+
+#: .\models\comment_flag.py:56
+msgid "Used for state flag"
+msgstr ""
+
+#: .\models\comment_flag.py:63
+msgid "moderator"
+msgstr ""
+
+#: .\models\comment_flag.py:64
+msgid "Used for linked key moderator first flag"
+msgstr ""
+
+#: .\models\comment_flag.py:69
+msgid "Used store history comment flag"
+msgstr ""
+
+#: .\models\comment_flag.py:76
+msgid "Used store comment flag"
+msgstr ""
+
+#: .\models\comment_flag.py:100
+msgid "flag"
+msgstr ""
+
+#: .\models\comment_flag.py:101
+msgid "Used for linked key flag"
+msgstr ""
+
+#: .\models\comment_flag.py:108
+msgid "Used for linked key user flag"
+msgstr ""
+
+#: .\models\comment_flag.py:113
+msgid "reason"
+msgstr ""
+
+#: .\models\comment_flag.py:114
+msgid "Used for reason flag"
+msgstr ""
+
+#: .\models\comment_flag.py:119
+msgid "Used store history comment flag reason"
+msgstr ""
+
+#: .\models\comment_flag.py:126
+msgid "Used store comment flag reason"
+msgstr ""
+
+#: .\models\comment_reaction.py:39
+msgid "like"
+msgstr ""
+
+#: .\models\comment_reaction.py:40
+msgid "Used for count like"
+msgstr ""
+
+#: .\models\comment_reaction.py:44
+msgid "dislike"
+msgstr ""
+
+#: .\models\comment_reaction.py:45
+msgid "Used for count dislike"
+msgstr ""
+
+#: .\models\comment_reaction.py:50
+msgid "Used store history comment reaction"
+msgstr ""
+
+#: .\models\comment_reaction.py:57
+msgid "Used store comment reaction"
+msgstr ""
+
+#: .\models\comment_reaction.py:101
+msgid "reaction"
+msgstr ""
+
+#: .\models\comment_reaction.py:102
+msgid "Used for linked key reaction"
+msgstr ""
+
+#: .\models\comment_reaction.py:109
+msgid "Used for linked key user"
+msgstr ""
+
+#: .\models\comment_reaction.py:113
+msgid "reaction type"
+msgstr ""
+
+#: .\models\comment_reaction.py:114
+msgid "Used for reaction type like or dislike"
+msgstr ""
+
+#: .\models\comment_reaction.py:119
+msgid "Used store history comment reaction reason"
+msgstr ""
+
+#: .\models\comment_reaction.py:126
+msgid "Used store comment reaction reason"
+msgstr ""
+
+#: .\templates\comment\index.html:180
+msgid "Delete Comment"
+msgstr ""
+
+#: .\templates\comment\index.html:181
+msgid "Are you sure you want to delete comment?. Unable to undo"
+msgstr ""
+
+#: .\templates\comment\index.html:184
+msgid "Yes"
+msgstr ""
+
+#: .\templates\comment\index.html:193
+msgid "No"
+msgstr ""
+
+#: .\templates\comment\index.html:244
+msgid "Loading older comments..."
+msgstr ""
+
+#: .\templates\comment\index.html:327
+msgid "Message is required"
+msgstr ""
+
+#: .\templates\comment\index.html:375
+msgid "Reason is required"
+msgstr ""
+
+#: .\templates\comment\index.html:386
+msgid "Flag Reason"
+msgstr ""
+
+#: .\templates\comment\partial\common.html:12
+msgid "This comment has been deleted"
+msgstr ""
+
+#: .\templates\comment\partial\common.html:24
+msgid "System"
+msgstr ""
+
+#: .\views\comment.py:73
+#, python-format
+msgid "Comment %(comment_id)s have been successfully created"
+msgstr ""
+
+#: .\views\comment.py:87 .\views\comment.py:115 .\views\flag.py:65
+#: .\views\reaction.py:65
+msgid "Data validation error"
+msgstr ""
+
+#: .\views\comment.py:101
+#, python-format
+msgid "Comment %(comment_id)s have been successfully deleted"
+msgstr ""
+
+#: .\views\flag.py:51
+#, python-format
+msgid "Comment flag %(flag_id)s, reason %(reason_id)s have been successfully %(created)s"
+msgstr ""
+
+#: .\views\flag.py:51 .\views\reaction.py:51
+msgid "created"
+msgstr ""
+
+#: .\views\flag.py:51 .\views\reaction.py:51
+msgid "updated"
+msgstr ""
+
+#: .\views\reaction.py:51
+#, python-format
+msgid "Comment reaction %(reaction_id)s, reason %(reason_id)s have been successfully %(created)s"
+msgstr ""

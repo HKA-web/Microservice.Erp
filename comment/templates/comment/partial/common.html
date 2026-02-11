@@ -1,0 +1,92 @@
+{% load comment %}
+{% load static %}
+{% if part in 'comment' %}
+    {% for item in data reversed %}
+        <div class="chat-item {% if not item.parent_id %}parent{% endif %}">
+            <a href="#" class="avatar w-40 circle {% if item.user == request.user %}bg-success-lt{% else %}bg-warning-lt{% endif %} p-1">
+                <img src="{% static 'application/media/favicon.ico' %}" alt=".">
+            </a>
+            <div class="chat-body m-0 w-100 r-3x b-l b-l-default {% if item.is_removed %}no-select text-muted{% endif %}">
+                <div class="message chat-content rounded msg {% if item.is_removed %}no-select text-muted{% endif %}" id="{{ item.pk }}">
+                    {% if item.is_removed %}
+                        {{ _('This comment has been deleted') }}
+                    {% else %}
+                        {% autoescape off %}{{ item.message_translated }}{% endautoescape %}
+                    {% endif %}
+                </div>
+                {% with replay_count=item.get_children_count %}
+                    <div class="d-flex flex id" id="{{ item.pk }}">
+                        <div class="text-primary pl-2">{% if item.user.real_name and item.user.real_name.strip %}
+                            {{ item.user.real_name }}
+                        {% elif item.user.user_name and item.user.user_name.strip %}
+                            {{ item.user.user_name|capfirst }}
+                        {% else %}
+                            {{ _('System') }}
+                        {% endif %}</div>
+                        <div class="text-muted pl-2">{{ item.age }}</div>
+                        <a class="pl-2 text-success like {% if not perms.comment.add_commentreaction %}text-muted{% endif %}">
+                            {% if item.likes > 0 %}
+                                {% commentliked item as liked %}
+                                {{ item.likes }}
+                                {% if liked %}
+                                    <i class="fa-solid fa-thumbs-up"></i>
+                                {% else %}
+                                    <i class="fa-regular fa-thumbs-up"></i>
+                                {% endif %}
+                            {% else %}
+                                <i class="fa-regular fa-thumbs-up"></i>
+                            {% endif %}
+                        </a>
+                        <a class="pl-2 text-warning dislike {% if not perms.comment.add_commentreaction %}text-muted{% endif %}">
+                            {% if item.dislikes > 0 %}
+                                {% commentdisliked item as disliked %}
+                                {{ item.dislikes }}
+                                {% if disliked %}
+                                    <i class="fa-solid fa-thumbs-down"></i>
+                                {% else %}
+                                    <i class="fa-regular fa-thumbs-down"></i>
+                                {% endif %}
+                            {% else %}
+                                <i class="fa-regular fa-thumbs-down"></i>
+                            {% endif %}
+                        </a>
+                        <a class="pl-2 text-danger flag {% if not perms.comment.add_commentflag %}text-muted{% endif %}">
+                            {% if item.flages > 0 %}
+                                {% commentflaged item as flaged %}
+                                {{ item.flages }}
+                                {% if flaged %}
+                                    <i class="fa-solid fa-flag"></i>
+                                {% else %}
+                                    <i class="fa-regular fa-flag"></i>
+                                {% endif %}
+                            {% else %}
+                                <i class="fa-regular fa-flag"></i>
+                            {% endif %}
+                        </a>
+                        <a class="pl-2 text-blue reply">
+                            {% if replay_count > 0 %}
+                                {{ replay_count }} <i class="fa-solid fa-reply"></i>
+                            {% else %}
+                                <i class="fa-regular fa-reply"></i>
+                            {% endif %}
+                        </a>
+                        {% if not item.is_removed %}
+                            {% if item.user == request.user or request.user.is_superuser %}
+                                {% if item.user == request.user and perms.comment.delete_comment and not item.read_only %}
+                                    <a class="pl-2 text-danger delete">
+                                        <i class="fa-regular fa-trash"></i>
+                                    </a>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="reply w-100 mt-1" id="{{ item.pk }}">
+                        {% if replay_count > 0 %}
+                            {% include 'comment/partial/common.html' with part='comment' data=item.get_children %}
+                        {% endif %}
+                    </div>
+                {% endwith %}
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}

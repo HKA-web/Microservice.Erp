@@ -1,0 +1,20 @@
+{
+  "profiles": {
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    },
+    "Do Not Run": {
+      "commandName": "Executable",
+      "executablePath": "E:\\Projects\\Dot NET\\DocumentEditorLibrary\\ERPro.NET\\Program.cs"
+    }
+  },
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:59899",
+      "sslPort": 44367
+    }
+  }
+}

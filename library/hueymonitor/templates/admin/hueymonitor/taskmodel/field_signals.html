@@ -1,0 +1,43 @@
+{% load i18n humanize_time %}
+
+<table class="table-bordered table-condensed table-striped huey_monitor">
+<thead>
+    <tr>
+        <th>{% trans 'Time period' %}</th>
+        <th>{% trans 'Signal Name' %}</th>
+        <th>{% trans 'Progress Count' %}</th>
+        <th>{% trans 'Hostname' %}</th>
+        <th>{% trans 'PID' %}</th>
+        <th>{% trans 'Thread' %}</th>
+        <th>{% trans 'Exception Line' %}</th>
+    </tr>
+</thead>
+<tbody>
+{% for signal in signals %}
+    <tr>
+        <td>
+            {% if not forloop.last %}
+                <span title="{{ signal.create_dt }}">
+                    {{ task.create_dt|human_duration:signal.create_dt }}
+                </span>
+            {% else %}
+                {{ signal.create_dt }}
+            {% endif %}
+        </td>
+        <td>{{ signal.signal_name|default_if_none:"-" }}</td>
+        <td>{{ signal.human_progress_count }}</td>
+        <td>{{ signal.hostname }}</td>
+        <td>{{ signal.pid }}</td>
+        <td>{{ signal.thread }}</td>
+        <td class="exception_info">
+            {% if signal.exception_line %}
+                <strong>{{ signal.exception_line }}</strong>
+                <pre>{{ signal.exception }}</pre>
+            {% else %}
+                -
+            {% endif %}
+        </td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>

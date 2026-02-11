@@ -1,0 +1,74 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-01 13:38+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\apps.py:9
+msgid "Object Permission"
+msgstr ""
+
+#: .\models\permission.py:35
+msgid "content type"
+msgstr ""
+
+#: .\models\permission.py:36
+msgid "Used for linked key content type"
+msgstr ""
+
+#: .\models\permission.py:39
+msgid "object id"
+msgstr ""
+
+#: .\models\permission.py:40
+msgid "Used for linked key object"
+msgstr ""
+
+#: .\models\permission.py:57
+msgid "user"
+msgstr ""
+
+#: .\models\permission.py:58
+msgid "Used for linked key user"
+msgstr ""
+
+#: .\models\permission.py:77
+msgid "object permission user id"
+msgstr ""
+
+#: .\models\permission.py:78 .\models\permission.py:112
+msgid "Used for identity"
+msgstr ""
+
+#: .\models\permission.py:84
+msgid "Used store user object permission"
+msgstr ""
+
+#: .\models\permission.py:91
+msgid "group"
+msgstr ""
+
+#: .\models\permission.py:92
+msgid "Used for linked key group"
+msgstr ""
+
+#: .\models\permission.py:111
+msgid "object permission group id"
+msgstr ""
+
+#: .\models\permission.py:118
+msgid "Used store group object permission"
+msgstr ""

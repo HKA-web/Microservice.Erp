@@ -1,0 +1,34 @@
+ALLOWED_HOSTS:
+- '*'
+CACHES_DEFAULT: redis
+CHANNEL_DEFAULT: redis
+CHANNEL_MSGPACK: true
+CHATBOT.ENABLED: false
+COMPRESS_ENABLED: false
+DATABASES.postgres.HOST: 127.0.0.1
+DATABASES.postgres.NAME: erpro
+DATABASES.postgres.PASSWORD: ENC(2242b4002fd6c1f5f3ba4db1177feef4303040f20ec90271f029ce2392c80f4f47cf9d77b341628f3fd4cd268fd8bb57)
+DATABASES.postgres.PORT: 5432
+DATABASES.postgres.USER: ENC(74ac7706857d8b1e79e50653eb97f713)
+DATABASES_DEFAULT: postgres
+DEBUG: true
+HUEYS.queues.low.consumer.workers: 3
+INSTALLED_MODULE:
+- authentication
+- core
+MANAGE_CLEAR_CONSOLE: true
+NUMBERING_PATTERN: a-zA-Z0-9.()@#:\[\]
+SECRET_KEY: 3rVgJTjBnq4nVvBZNBNwRGmNmCaapzTqqbTNQiVg3qY44qFKuFL5GJFh7zxf4tmLCijyZaaGq5yVbXnrvHKbx7wJJZnJyJ9rRZkq
+SECRET_KEY_FALLBACKS:
+- 3Zsn9x5hrKW6z54avxaQYZxvinfyttQxUhFasqPJMbm3VXXMDG9BL8Cjv6GRkw4AMKrXUKpeqbwG4AYPPA84DkPNHcEVCiHtsLhU
+- HjytmruP5yFN8rhWcSFLjLa4YhtP7ufnahgk6GArsyDfgVCs3YwH9wVahEiQqhFPDaBoihTK7XLDWxsTwHefvskfRZ35iM8XGbn9
+SECURE_SSL_REDIRECT: false
+SITE_ID: 1659728634186
+AUTHENTICATION.CAPCHA: 1234567890
+WHATSAPP.CONFIG:
+  shouldSyncHistoryMessage: false
+  syncFullHistory: false
+  webhook:
+    autoReadMessage: false
+    autoRejectCall: true
+WHATSAPP.WEBHOOK_URL: http://127.0.0.1:8000/whatsapp/webhook/

@@ -1,0 +1,409 @@
+{% extends 'base/index.html' %}
+{% load string %}
+{% load static %}
+
+{% load environment %}
+{% load settings %}
+{% block identity %} comment {% endblock identity %}
+{% block title %} {{ _('Comment') }} {% endblock %}
+{% block head %}
+    {{ block.super }}
+
+        {% include 'partial/common.html' with part='requirediframe' tag='open,close' %}
+
+    {% include 'partial/common.html' with part='header' %}
+    {% include 'partial/common.html' with part='application' type='css' %}
+{% endblock head %}
+<style type="text/css" rel="stylesheet">{% block stylesheet %}{% endblock stylesheet %}</style>
+{% block body %}
+    <div id="main" class="layout-row flex">
+        <div id="content" class="flex ">
+            <div class="d-flex h-100">
+                <div class="d-flex flex h-100 block m-0">
+                    <div class="d-flex flex-column flex inner">
+                        <div class="flex p-2 h-1x scrollview hover" id="comment">
+                            {% block partial %}
+                                {% include 'comment/partial/common.html' with part='comment' data=comment %}
+                            {% endblock %}
+                        </div>
+                        <div class="p-2 mt-auto hide replying"></div>
+                        <div class="flag hide">
+                            <form class="flag" action="{% include 'partial/common.html' with part='void' %}">
+                                <div class="dx-field">
+                                    <div class="flag" id="flag_reason"></div>
+                                </div>
+                                <div class="flag my-2" id="validator"></div>
+                            </form>
+                        </div>
+                        <div class="p-2 b-t mt-auto">
+                            <div class="form" id="comment"></div>
+                            <button class="btn btn-lg btn-wave btn-icon btn-rounded m-3 no-shadow abs-r abs-b submit hide">
+                                <span><i class="text-primary fa-light fa-paper-plane fa-xs faa-tada animated-hover"></i></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
+{% block footer %}
+    {% include 'partial/common.html' with part='footer' %}
+
+
+{% endblock footer %}
+
+    {% block javascript %}
+        <script type="text/javascript">
+            function save(callback) {
+                $.ajax({
+                    url: '{% url 'comment:comment' %}',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: $('div.form#comment').dxForm('option', 'formData'),
+                    success: function (data, textStatus, jqXHR) {
+                        callback(data, textStatus, jqXHR);
+                    },
+                });
+            }
+
+            function reset() {
+                $('div.replying').empty().addClass('hide');
+                $('div.form#comment').dxForm('instance').resetValues();
+                $('div.form#comment').dxForm('option', 'formData', {
+                    content_type_id: '{% nolocalize content_type.pk as pk %}{{ pk }}',
+                    object_id: '{% nolocalize object.pk as pk %}{{ pk }}',
+                });
+            }
+
+            function saveExit() {
+                save(function (data, textStatus, jqXHR) {
+                    var element = $('div.scrollview#comment').find('div.dx-scrollview-content');
+                    var html = $.parseHTML(data.html);
+                    if (data.comment.parent_id) {
+                        var reply = element.find(['div.id', data.comment.parent_id].join('#')).parent().find(['div.reply', data.comment.parent_id].join('#'));
+                        reply.append(html);
+                        setTimeout(function () {
+                            $('div.scrollview#comment').dxScrollView('instance').scrollTo(reply.position().top - 200);
+                            $.util.animateCSS(reply, 'bounce');
+                        }, 500);
+                    } else {
+                        element.append(html);
+                        setTimeout(function () {
+                            $('div.scrollview#comment').dxScrollView('instance').scrollTo($('div.scrollview#comment').dxScrollView('instance').scrollHeight());
+                            $.util.animateCSS($('div.scrollview#comment').find('div.dx-scrollview-content').find(html), 'bounce');
+                        }, 500);
+                    }
+                    reset();
+                });
+            }
+
+            $(document).ready(function () {
+                {% include 'partial/common.html' with part='csfr' %}
+                $('div.scrollview#comment').on('click', 'a.like', function (e) {
+                    var anchor = $(this);
+                    $.ajax({
+                        url: '{% url 'comment:comment-reaction' %}',
+                        method: 'POST',
+                        dataType: 'json',
+                        data: {
+                            comment_id: anchor.parent().attr('id'),
+                            reaction_type: 1,
+                        },
+                        headers: {
+                            'AspNetData': true,
+                        },
+                        success: function (data, textStatus, jqXHR) {
+                            var element = $('div.scrollview#comment').find('div.dx-scrollview-content');
+                            var html = $.parseHTML(data.html);
+                            var liked = element.find(['div.id', data.comment.comment_id].join('#'));
+                            liked.html($(html).find(['div.id', data.comment.comment_id].join('#')).html());
+                            $.util.animateCSS(liked.find('a.like'), 'flip');
+                        },
+                    });
+                }).on('click', 'a.dislike', function (e) {
+                    var anchor = $(this);
+                    $.ajax({
+                        url: '{% url 'comment:comment-reaction' %}',
+                        method: 'POST',
+                        dataType: 'json',
+                        data: {
+                            comment_id: anchor.parent().attr('id'),
+                            reaction_type: 2,
+                        },
+                        headers: {
+                            'AspNetData': true,
+                        },
+                        success: function (data, textStatus, jqXHR) {
+                            var element = $('div.scrollview#comment').find('div.dx-scrollview-content');
+                            var html = $.parseHTML(data.html);
+                            var disliked = element.find(['div.id', data.comment.comment_id].join('#'));
+                            disliked.html($(html).find(['div.id', data.comment.comment_id].join('#')).html());
+                            $.util.animateCSS(disliked.find('a.dislike'), 'flip');
+                        },
+                    });
+                }).on('click', 'a.flag', function (e) {
+                    var anchor = $(this);
+                    $('div.flag.hide').dxPopover({
+                        target: $(this),
+                    }).dxPopover('instance').show();
+                    $('form.flag').attr('id', anchor.parent().attr('id'));
+                }).on('click', 'a.reply', function (e) {
+                    var anchor = $(this);
+                    var chat = $('<div/>', {
+                        class: 'chat-body m-0 p-1 r-3x b-l b-l-success b-r b-r-success b-t b-t-success b-b b-b-success b-dashed'
+                    });
+                    var close = $('<a class=\'abs-r mt-1 mr-2\'><span class=\'text-md l-h-1x\'><i class=\'mr-2 i-con i-con-close\'></i></span></a>');
+                    $('div.form#comment').dxForm('option', 'formData.parent_id', anchor.parent().attr('id'));
+                    chat.append($(anchor.parents('div.chat-body')[0]).html());
+                    chat.find('div.reply').remove();
+                    chat.find('a.dislike').removeClass('dislike');
+                    chat.find('a.flag').removeClass('flag');
+                    chat.find('a.reply').removeClass('reply');
+                    chat.on('click', function () {
+                        $.util.animateCSS($(anchor.parents('div.chat-item')[0]), 'heartBeat');
+                    });
+                    close.on('click', function () {
+                        $('div.form#comment').dxForm({
+                            formData: _.omit($('div.form#comment').dxForm('option', 'formData'), ['parent_id'])
+                        });
+                        chat.remove();
+                        $('div.replying').addClass('hide');
+                    });
+                    $.util.animateCSS(chat, 'bounce').then(function (message) {
+                        chat.append(close);
+                    });
+                    $('div.replying').html(chat).removeClass('hide');
+                }).on('click', 'a.delete', function (e) {
+                    var anchor = $(this)
+                    DevExpress.ui.dialog.custom({
+                        title: '{{ _('Delete Comment') }}',
+                        messageHtml: '{{ _('Are you sure you want to delete comment?. Unable to undo') }}',
+                        buttons: [{
+                            stylingMode: 'outlined',
+                            text: '{{ _('Yes') }}',
+                            onClick: function (e) {
+                                return {
+                                    key: 'yes',
+                                    text: e.component.option('text'),
+                                }
+                            },
+                        }, {
+                            stylingMode: 'outlined',
+                            text: '{{ _('No') }}',
+                            onClick: function (e) {
+                                return {
+                                    key: 'no',
+                                    text: e.component.option('text'),
+                                }
+                            },
+                        },],
+                    }).show().done(function (e) {
+                        if (e.key === 'yes') {
+                            $.ajax({
+                                url: '{% url 'comment:comment' %}',
+                                method: 'POST',
+                                dataType: 'json',
+                                data: {
+                                    comment_id: anchor.parent().attr('id'),
+                                },
+                                headers: {
+                                    'MethodOverride': 'DELETE',
+                                    'AspNetData': true,
+                                },
+                                success: function (data, textStatus, jqXHR) {
+                                    var html = $.parseHTML(data.html);
+                                    var deleted = $(['div.message', data.comment.comment_id].join('#')).parent('div.chat-body').parent('div.chat-item');
+                                    deleted.html($(html).find(['div.message', data.comment.comment_id].join('#')).parent('div.chat-body').parent('div.chat-item').html());
+                                },
+                            });
+                        }
+                    });
+                }).dxScrollView({
+                    scrollByContent: true,
+                    scrollByThumb: true,
+                    showScrollbar: 'onScroll',
+                    onPullDown: function (e) {
+                        $.ajax({
+                            url: '{% url 'comment:comment' pk=content_type.pk object=object.pk %}' + $('div.dx-scrollview-content').find('div.chat-item.parent').length + '/',
+                            type: 'GET',
+                            dataType: 'json',
+                            data: {},
+                            headers: {
+                                'AspNetData': true,
+                            },
+                            success: function (data, textStatus, jqXHR) {
+                                $('div.dx-scrollview-content').prepend($.parseHTML(data.html));
+                            },
+                            complete: function (jqXHR, textStatus) {
+                                e.component.release();
+                            },
+                        });
+                    },
+                    bounceEnabled: true,
+                    reachBottomText: '{{ _('Loading older comments...') }}',
+                    onInitialized: function (e) {
+                        setTimeout(function () {
+                            e.component.scrollTo(e.component.scrollHeight());
+                        }, 500);
+                    },
+                    onScroll: function (e) {
+                        var flag = DevExpress.ui.dxPopover.getInstance($('div.flag.hide'));
+                        if (flag) {
+                            flag.hide();
+                        }
+                    },
+                });
+                $('div.form#comment').dxForm({
+                    showColonAfterLabel: true,
+                    showValidationSummary: true,
+                    validationGroup: 'comment',
+                    scrollingEnabled: true,
+                    formData: {
+                        content_type_id: '{% nolocalize content_type.pk as pk %}{{ pk }}',
+                        object_id: '{% nolocalize object.pk as pk %}{{ pk }}',
+                    },
+                    alignItemLabelsInAllGroups: true,
+                    items: [{
+                        dataField: 'message',
+                        label: {
+                            visible: false,
+                        },
+                        template: function (data, itemElement) {
+                            $('<div/>', {
+                                class: 'no-border no-shadow no-bg editor',
+                                id: 'comment',
+                                appendTo: itemElement,
+                            }).dxHtmlEditor({
+                                width: '100%',
+                                height: 200,
+                                mentions: [{
+                                    dataSource: new DevExpress.data.AspNet.createStore({
+                                        loadUrl: '{% url 'authentication:api:user-list' %}',
+                                        onBeforeSend: function (method, ajaxOptions) {
+                                            ajaxOptions.xhrFields = {withCredentials: true}
+                                            ajaxOptions.headers = $.lo.merge(ajaxOptions.headers, {AspNetData: true})
+                                        },
+                                    }),
+                                    searchExpr: ['user_id', 'user_name', 'real_name',],
+                                    displayExpr: function (item) {
+                                        return item.real_name ? item.real_name : item.user_name;
+                                    },
+                                    valueExpr: 'user_id',
+                                }],
+                                valueType: 'html',
+                                toolbar: {
+                                    items: [
+                                        'undo', 'redo', {
+                                            name: 'size',
+                                            acceptedValues: ['8pt', '10pt', '12pt', '14pt', '18pt', '24pt', '36pt',],
+                                        }, {
+                                            name: 'font',
+                                            acceptedValues: ['Arial', 'Courier New', 'Georgia', 'Impact', 'Lucida Console', 'Tahoma', 'Times New Roman', 'Verdana',],
+                                        }, 'bold', 'italic', 'strike', 'underline', 'alignLeft', 'alignCenter', 'alignRight', 'alignJustify', 'color', 'background', {
+                                            widget: 'dxButton',
+                                            options: {
+                                                icon: 'redo',
+                                                stylingMode: 'text',
+                                                onClick: function() {
+                                                    reset();
+                                                },
+                                            },
+                                        },
+                                    ],
+                                },
+                                onValueChanged: function (e) {
+                                    data.component.updateData(data.dataField, e.value);
+                                },
+                                onInitialized: function (e) {
+                                    setTimeout(function () {
+                                        $('button.submit').removeClass('hide');
+                                    }, 500);
+                                },
+                            });
+                        },
+                        validationRules: [{
+                            type: 'required',
+                            message: '{{ _('Message is required') }}',
+                        },]
+                    }],
+                    onContentReady: function (e) {
+                        $.util.loader.hide();
+                    },
+                });
+                $('div.flag#flag_reason').dxTextBox({
+                    buttons: [{
+                        name: 'submit',
+                        location: 'after',
+                        options: {
+                            icon: 'check',
+                            stylingMode: 'text',
+                            type: 'success',
+                            validationGroup: 'flag',
+                            onClick: function (e) {
+                                var result = e.validationGroup.validate();
+                                if (result.isValid) {
+                                    $.ajax({
+                                        url: '{% url 'comment:comment-flag' %}',
+                                        method: 'POST',
+                                        dataType: 'json',
+                                        data: {
+                                            comment_id: $('form.flag').attr('id'),
+                                            reason: $('div.flag#flag_reason').dxTextBox('option', 'value'),
+                                        },
+                                        headers: {
+                                            'AspNetData': true
+                                        },
+                                        success: function (data, textStatus, jqXHR) {
+                                            $('div.flag#flag_reason').dxValidator('instance').reset()
+                                            $('div.flag.hide').dxPopover('instance').hide();
+                                            var element = $('div.scrollview#comment').find('div.dx-scrollview-content');
+                                            var html = $.parseHTML(data.html);
+                                            var flagged = element.find(['div.id', data.comment.comment_id].join('#'));
+                                            flagged.html($(html).find(['div.id', data.comment.comment_id].join('#')).html());
+                                            $.util.animateCSS(flagged.find('a.flag'), 'flip');
+                                        },
+                                    });
+                                }
+                            },
+                        },
+                    }],
+                }).dxValidator({
+                    validationGroup: 'flag',
+                    validationRules: [{
+                        type: 'required',
+                        message: '{{ _('Reason is required') }}',
+                    },],
+                });
+                $('div.flag#validator').dxValidationSummary({
+                    validationGroup: 'flag',
+                });
+                $('div.flag.hide').dxPopover({
+                    showEvent: 'dxclick',
+                    position: 'top',
+                    width: 300,
+                    showTitle: true,
+                    title: '{{ _('Flag Reason') }}',
+                    onHidden: function (e) {
+                        $('div.flag#flag_reason').dxValidator('instance').reset();
+                    },
+                });
+                $('button.submit').on('click', function () {
+                    var validate = $('div.form#comment').dxForm('instance').validate();
+                    if (!validate.isValid) {
+                        $.util.animateCSS($('div.form#comment'), 'headShake');
+                    } else if (validate.status === 'valid') {
+                        window['saveExit']();
+                        $.util.animateCSS($('button.submit'), 'fadeOut');
+                    }
+                    validate.status === 'pending' && validate.complete.then(function (v) {
+                        if (v.isValid) {
+                            window['saveExit']();
+                            $.util.animateCSS($('button.submit'), 'fadeOut');
+                        }
+                    });
+                });
+            });
+        </script>
+    {% endblock javascript %}
+

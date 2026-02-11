@@ -1,0 +1,11 @@
+**/node_modules/
+**/vendor/
+**/locale/
+assets/
+data/
+env/
+library/
+.git
+.mvn
+gradle
+.gradle

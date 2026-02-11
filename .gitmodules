@@ -1,0 +1,6 @@
+[submodule "authentication"]
+	path = authentication
+	url = https://github.com/HKA-web/Microservice.Erp.Authentication.git
+[submodule "core"]
+	path = core
+	url = https://github.com/HKA-web/Microservice.Erp.Core.git

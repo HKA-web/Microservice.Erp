@@ -15,8 +15,6 @@ bin/nginx/nginx.pid
 *.old
 
 # ignore module here
-core/
-authentication/
 whatsapp/
 
 # force include here

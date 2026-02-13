@@ -13,8 +13,11 @@ bin/nginx/nginx.pid
 *.pyc
 *.egg
 *.old
+empty.zip
 
 # ignore module here
+core/
+authentication/
 whatsapp/
 
 # force include here

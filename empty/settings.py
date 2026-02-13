@@ -1,13 +1,10 @@
 import logging
 import sys
-from pathlib import Path
 
 from django.conf import settings as djangosettings
-
-from empty.apps import ApplicationConfig
+from empty.apps import ApplicationConfig #change this
 
 logger = logging.getLogger(__name__)
-cwd = Path(__file__).resolve().parent
 
 DEFAULTS = dict(
     SCHEMA=ApplicationConfig.name,

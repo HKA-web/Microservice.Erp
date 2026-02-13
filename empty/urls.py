@@ -1,13 +1,14 @@
 import logging
+
+from django.conf import settings
 from django.urls import path, include, re_path
-from empty import views
+
+from empty import views #change this
 
 logger = logging.getLogger(__name__)
 
 auto = True
-app_name = 'empty'
+app_name = 'empty' #change this
 urlpatterns = [
-    re_path(r'^empty/$', views.EmptyView.as_view(), name='empty'),
-
-    path('empty/', include('empty.apis.urls'), name='empty'),
+    path('api/', include('empty.apis.urls'), name='empty'), #change this
 ]

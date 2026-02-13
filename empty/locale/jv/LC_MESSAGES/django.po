@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-28 11:19+0700\n"
+"POT-Creation-Date: 2024-04-25 09:31+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,512 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\apps.py:7
+#: .\apis\views\ping.py:70
+#, python-format
+msgid "Ping data %(count)s have been successfully deleted"
+msgstr ""
+
+#: .\apis\views\ping.py:76
+#, python-format
+msgid "Ping %(ping_id)s have been successfully deleted"
+msgstr ""
+
+#: .\apis\views\ping.py:98
+#, python-format
+msgid "Ping data %(count)s have been successfully undeleted"
+msgstr ""
+
+#: .\apis\views\ping.py:105
+#, python-format
+msgid "Ping %(ping_id)s have been successfully undeleted"
+msgstr ""
+
+#: .\apps.py:12
+msgid "Network"
+msgstr ""
+
+#: .\forms\ping.py:13 .\templates\network\ping\index.html:540
+msgid "Ping ID"
+msgstr ""
+
+#: .\forms\ping.py:16
+msgid "Your ping id"
+msgstr ""
+
+#: .\forms\ping.py:22
+msgid "Ping name"
+msgstr ""
+
+#: .\forms\ping.py:25
+msgid "Your ping name"
+msgstr ""
+
+#: .\forms\ping.py:31 .\templates\network\ping\index.html:548
+msgid "Ping Address"
+msgstr ""
+
+#: .\forms\ping.py:34
+msgid "Your ping address"
+msgstr ""
+
+#: .\forms\ping.py:40 .\templates\network\ping\index.html:552
+msgid "Count"
+msgstr ""
+
+#: .\forms\ping.py:43
+msgid "Your count"
+msgstr ""
+
+#: .\forms\ping.py:49 .\templates\network\ping\index.html:556
+msgid "Interval"
+msgstr ""
+
+#: .\forms\ping.py:52
+msgid "Your interval"
+msgstr ""
+
+#: .\forms\ping.py:58 .\templates\network\ping\index.html:560
+msgid "Timeout"
+msgstr ""
+
+#: .\forms\ping.py:61
+msgid "Your timeout"
+msgstr ""
+
+#: .\forms\ping.py:67 .\templates\network\ping\index.html:564
+msgid "Source"
+msgstr ""
+
+#: .\forms\ping.py:70
+msgid "Your source"
+msgstr ""
+
+#: .\forms\ping.py:76 .\templates\network\ping\index.html:568
+msgid "Family"
+msgstr ""
+
+#: .\forms\ping.py:79
+msgid "Your family"
+msgstr ""
+
+#: .\forms\ping.py:85 .\templates\network\ping\index.html:577
+msgid "Size"
+msgstr ""
+
+#: .\forms\ping.py:88
+msgid "Your size"
+msgstr ""
+
+#: .\forms\ping.py:94 .\templates\network\ping\index.html:653
+msgid "Read Only"
+msgstr ""
+
+#: .\forms\ping.py:97
+msgid "Your read only"
+msgstr ""
+
+#: .\forms\ping.py:103 .\templates\network\ping\index.html:649
+msgid "Enable"
+msgstr ""
+
+#: .\forms\ping.py:106
+msgid "Your enable"
+msgstr ""
+
+#: .\forms\ping.py:112
+msgid "Description"
+msgstr ""
+
+#: .\forms\ping.py:115
+msgid "Your description"
+msgstr ""
+
+#: .\forms\ping.py:121
+msgid "Properties"
+msgstr ""
+
+#: .\forms\ping.py:124
+msgid "Your properties"
+msgstr ""
+
+#: .\models\ping.py:16
+msgid "IP Version 4"
+msgstr ""
+
+#: .\models\ping.py:17
+msgid "IP Version 6"
+msgstr ""
+
+#: .\models\ping.py:22
+msgid "ping id"
+msgstr ""
+
+#: .\models\ping.py:23
+msgid "Used for identity"
+msgstr ""
+
+#: .\models\ping.py:26
+msgid "ping name"
+msgstr ""
+
+#: .\models\ping.py:27
+msgid "Used for view"
+msgstr ""
+
+#: .\models\ping.py:30
+msgid "ping address"
+msgstr ""
+
+#: .\models\ping.py:31
+msgid "Used for IP address, hostname or FQDN of the host to reach. For deterministic behavior, prefer to use an IP address"
+msgstr ""
+
+#: .\models\ping.py:35
+msgid "count"
+msgstr ""
+
+#: .\models\ping.py:36
+msgid "Used for number of ping to perform per hop"
+msgstr ""
+
+#: .\models\ping.py:40
+msgid "interval"
+msgstr ""
+
+#: .\models\ping.py:41
+msgid "Used for interval in seconds between sending each packet"
+msgstr ""
+
+#: .\models\ping.py:45
+msgid "timeout"
+msgstr ""
+
+#: .\models\ping.py:46
+msgid "Used for maximum waiting time for receiving a reply in seconds"
+msgstr ""
+
+#: .\models\ping.py:50
+msgid "source"
+msgstr ""
+
+#: .\models\ping.py:51
+msgid "Used for IP address from which you want to send packets. By default, the interface is automatically chosen according to the specified destination"
+msgstr ""
+
+#: .\models\ping.py:57 .\models\ping.py:62
+msgid "family"
+msgstr ""
+
+#: .\models\ping.py:58
+msgid "Used for address family if a hostname or FQDN is specified. Can be set to 4 for IPv4 or 6 for IPv6 addresses. By default, this function searches for IPv4 addresses first before searching for IPv6 addresses"
+msgstr ""
+
+#: .\models\ping.py:63
+msgid "Used for payload size. A random payload is used by default"
+msgstr ""
+
+#: .\models\ping.py:70
+msgid "Used store history ping"
+msgstr ""
+
+#: .\models\ping.py:77
+msgid "Used store ping"
+msgstr ""
+
+#: .\models\ping.py:133
+msgid "ping"
+msgstr ""
+
+#: .\models\ping.py:134
+msgid "Used for linked key"
+msgstr ""
+
+#: .\models\ping.py:138
+msgid "alive"
+msgstr ""
+
+#: .\models\ping.py:139
+msgid "Used for Indicates whether the host is reachable"
+msgstr ""
+
+#: .\models\ping.py:146
+msgid "Used store history ping result"
+msgstr ""
+
+#: .\models\ping.py:153
+msgid "Used store ping result"
+msgstr ""
+
+#: .\templates\network\ping\create.html:9
+#: .\templates\network\ping\index.html:36
+#: .\templates\network\ping\update.html:69
+msgid "Ping Create"
+msgstr ""
+
+#: .\templates\network\ping\create.html:60
+#: .\templates\network\ping\create.html:73
+msgid "Ping <b><tpl= ping_name tpl/></b> successfully created"
+msgstr ""
+
+#: .\templates\network\ping\create.html:102
+#: .\templates\network\ping\create.html:511
+#: .\templates\network\ping\update.html:127
+#: .\templates\network\ping\update.html:550
+msgid "Checked For"
+msgstr ""
+
+#: .\templates\network\ping\create.html:112
+#: .\templates\network\ping\create.html:521
+#: .\templates\network\ping\update.html:137
+#: .\templates\network\ping\update.html:560
+msgid "is required"
+msgstr ""
+
+#: .\templates\network\ping\create.html:126
+msgid "<div>Create New <b>Ping</b></div>"
+msgstr ""
+
+#: .\templates\network\ping\create.html:133
+#: .\templates\network\ping\update.html:158
+msgid "Save"
+msgstr ""
+
+#: .\templates\network\ping\create.html:169
+#: .\templates\network\ping\update.html:194
+msgid "Save then Create New"
+msgstr ""
+
+#: .\templates\network\ping\create.html:173
+#: .\templates\network\ping\update.html:198
+msgid "Save then Exit"
+msgstr ""
+
+#: .\templates\network\ping\create.html:184
+#: .\templates\network\ping\update.html:209
+msgid "Are you sure you want to reset the form?. Unable to undo"
+msgstr ""
+
+#: .\templates\network\ping\create.html:184
+#: .\templates\network\ping\update.html:209
+msgid "Confirm reset form"
+msgstr ""
+
+#: .\templates\network\ping\create.html:209
+#: .\templates\network\ping\update.html:247
+msgid "General"
+msgstr ""
+
+#: .\templates\network\ping\create.html:228
+#: .\templates\network\ping\update.html:266
+msgid "Numbering pattern is not allowed"
+msgstr ""
+
+#: .\templates\network\ping\create.html:231
+#: .\templates\network\ping\update.html:269
+msgid "Ping id <tpl= value tpl/> is already registered"
+msgstr ""
+
+#: .\templates\network\ping\create.html:233
+#: .\templates\network\ping\create.html:270
+#: .\templates\network\ping\create.html:307
+#: .\templates\network\ping\update.html:271
+#: .\templates\network\ping\update.html:308
+#: .\templates\network\ping\update.html:345
 msgid "Empty"
+msgstr ""
+
+#: .\templates\network\ping\create.html:247
+#: .\templates\network\ping\create.html:284
+#: .\templates\network\ping\create.html:321
+#: .\templates\network\ping\update.html:285
+#: .\templates\network\ping\update.html:322
+#: .\templates\network\ping\update.html:359
+msgid "Validation server error"
+msgstr ""
+
+#: .\templates\network\ping\create.html:265
+#: .\templates\network\ping\update.html:340
+msgid "Ping address is required"
+msgstr ""
+
+#: .\templates\network\ping\create.html:268
+#: .\templates\network\ping\update.html:343
+msgid "Ping address <tpl= value tpl/> is already registered"
+msgstr ""
+
+#: .\templates\network\ping\create.html:302
+#: .\templates\network\ping\update.html:303
+msgid "Ping name is required"
+msgstr ""
+
+#: .\templates\network\ping\create.html:305
+#: .\templates\network\ping\update.html:306
+msgid "Ping name <tpl= value tpl/> is already registered"
+msgstr ""
+
+#: .\templates\network\ping\create.html:455
+#: .\templates\network\ping\update.html:493
+msgid "Setting"
+msgstr ""
+
+#: .\templates\network\ping\create.html:467
+#: .\templates\network\ping\update.html:505
+msgid "Checked For Enable Ping"
+msgstr ""
+
+#: .\templates\network\ping\create.html:484
+#: .\templates\network\ping\update.html:522
+msgid "Checked For Read Only Mode"
+msgstr ""
+
+#: .\templates\network\ping\index.html:10
+#: .\templates\network\ping\index.html:28
+#: .\templates\network\ping\index.html:177
+#: .\templates\network\ping\index.html:448
+msgid "Ping"
+msgstr ""
+
+#: .\templates\network\ping\index.html:38
+msgid "Create"
+msgstr ""
+
+#: .\templates\network\ping\index.html:44
+msgid "Ping Import"
+msgstr ""
+
+#: .\templates\network\ping\index.html:46
+msgid "Import"
+msgstr ""
+
+#: .\templates\network\ping\index.html:52
+#: .\templates\network\ping\update.html:10
+msgid "Ping Update"
+msgstr ""
+
+#: .\templates\network\ping\index.html:54
+msgid "Update"
+msgstr ""
+
+#: .\templates\network\ping\index.html:60
+msgid "Delete Ping"
+msgstr ""
+
+#: .\templates\network\ping\index.html:61
+#: .\templates\network\ping\index.html:73
+#: .\templates\network\ping\index.html:689
+msgid "Are you sure you want to delete <b><tpl= length tpl/></b> ping ?. Unable to undo"
+msgstr ""
+
+#: .\templates\network\ping\index.html:61
+#: .\templates\network\ping\index.html:73
+#: .\templates\network\ping\index.html:677
+msgid "Are you sure you want to delete ping <b><tpl= ping_name tpl/></b> ?. Unable to undo"
+msgstr ""
+
+#: .\templates\network\ping\index.html:62
+#: .\templates\network\ping\index.html:74
+msgid "No"
+msgstr ""
+
+#: .\templates\network\ping\index.html:63
+#: .\templates\network\ping\index.html:75
+msgid "Yes"
+msgstr ""
+
+#: .\templates\network\ping\index.html:66
+msgid "Delete"
+msgstr ""
+
+#: .\templates\network\ping\index.html:72
+msgid "Undelete Ping"
+msgstr ""
+
+#: .\templates\network\ping\index.html:78
+msgid "Undelete"
+msgstr ""
+
+#: .\templates\network\ping\index.html:86
+#: .\templates\network\ping\index.html:177
+#: .\templates\network\ping\index.html:581
+msgid "History"
+msgstr ""
+
+#: .\templates\network\ping\index.html:91
+msgid "Saved Filter"
+msgstr ""
+
+#: .\templates\network\ping\index.html:119
+msgid "Clear Filter"
+msgstr ""
+
+#: .\templates\network\ping\index.html:159
+msgid "Comment"
+msgstr ""
+
+#: .\templates\network\ping\index.html:319
+#: .\templates\network\ping\index.html:393
+msgid "Filter name is required"
+msgstr ""
+
+#: .\templates\network\ping\index.html:331
+msgid "Save Custom Filter"
+msgstr ""
+
+#: .\templates\network\ping\index.html:405
+msgid "Delete Custom Filter"
+msgstr ""
+
+#: .\templates\network\ping\index.html:472
+msgid "Uncheck To Show Deleted Data"
+msgstr ""
+
+#: .\templates\network\ping\index.html:515
+#: .\templates\network\ping\index.html:530
+#, python-format
+msgid "Update Properties %(name)s"
+msgstr ""
+
+#: .\templates\network\ping\index.html:544
+msgid "Ping Name"
+msgstr ""
+
+#: .\templates\network\ping\index.html:583
+msgid "Alive"
+msgstr ""
+
+#: .\templates\network\ping\index.html:600
+msgid "Create Date"
+msgstr ""
+
+#: .\templates\network\ping\index.html:604
+#: .\templates\network\ping\index.html:607
+#: .\templates\network\ping\index.html:628
+#: .\templates\network\ping\index.html:631
+msgid "EEEE, yyyy MMM dd, HH:mm:ss.SSS"
+msgstr ""
+
+#: .\templates\network\ping\index.html:624
+msgid "Update Date"
+msgstr ""
+
+#: .\templates\network\ping\index.html:657
+msgid "Status"
+msgstr ""
+
+#: .\templates\network\ping\index.html:701
+msgid "Are you sure you want to undelete ping <b><tpl= ping_name tpl/></b> ?. Unable to undo"
+msgstr ""
+
+#: .\templates\network\ping\index.html:707
+msgid "Are you sure you want to undelete <b><tpl= length tpl/></b> ping ?. Unable to undo"
+msgstr ""
+
+#: .\templates\network\ping\update.html:64
+#: .\templates\network\ping\update.html:85
+msgid "Ping <b><tpl= ping_name tpl/></b> successfully updated"
+msgstr ""
+
+#: .\templates\network\ping\update.html:151
+#, python-format
+msgid "<div>Update exisiting Ping <b>%(ping_name)s</b></div>"
 msgstr ""

@@ -1,5 +1,1 @@
-from empty.views.empty import EmptyView
-
-__all__ = [
-    EmptyView,
-]
+__all__ = []

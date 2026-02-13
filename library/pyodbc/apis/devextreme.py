@@ -34,6 +34,9 @@ class DevExtremeQueryViewSet(ViewSet, ):
     def connection(self, request, ):
         return connections[request.query_params.get('connection', DatabaseAlias)]
 
+    def clean_row(self, columns, row, ):
+        return {col: val.strip() if isinstance(val, str) else val for col, val in zip(columns, row)}
+
     def list(self, request, *args, **kwargs):
         start_time = time.time()
         params = request.query_params
@@ -64,12 +67,7 @@ class DevExtremeQueryViewSet(ViewSet, ):
             logger.debug(f'Executing Query ({database_type}): {final_query}')
             cursor.execute(final_query)
             columns = [column[0].lower() for column in cursor.description]
-            rows = cursor.fetchall()
-            data = [
-                {col: val.strip() if isinstance(val, str) else val
-                for col, val in zip(columns, row)}
-                for row in rows
-            ]
+            data = [self.clean_row(columns, row) for row in cursor.fetchall()]
             total_count = None
             if require_total_count and count_query:
                 logger.debug(f'Executing Count Query ({database_type}): {count_query}')
@@ -87,7 +85,7 @@ class DevExtremeQueryViewSet(ViewSet, ):
             response_data['summary'] = self._calculate_summary(total_summary, filtered, )
         end_time = time.time()
         response_data['execution'] = round(end_time - start_time, 4)
-        response_data['data'] = lodash.map(data, lambda item: lodash.pick(item, *fields)) if fields else data,
+        response_data['data'] = data = lodash.map(data, lambda item: lodash.pick(item, *fields)) if fields else data
         return Response(response_data, )
 
     def _clean_double_where(self, query):
@@ -291,8 +289,36 @@ class DevExtremeQueryViewSet(ViewSet, ):
     def _calculate_summary(self, summary_list, filtered):
         return {}
 
+    def _escape_sql_string(self, value, ):
+        return value.replace('\'', '\'\'')
+
+    def _sql_value(self, value, ):
+        if value is None:
+            return 'NULL'
+        if isinstance(value, (int, float)):
+            return str(value)
+        if isinstance(value, str):
+            val = value.strip()
+            if val.upper() in ('GETDATE()', 'CURRENT_TIMESTAMP'):
+                return val
+            return '\'' + self._escape_sql_string(val, ) + '\''
+        return '\'' + self._escape_sql_string(str(value)) + '\''
+
+    def data(self, request, ):
+        if isinstance(request.data, QueryDict):
+            return request.data.dict()
+        return request.data if bool(request.data) else request.query_params.dict()
+
     def create(self, request, *args, **kwargs):
-        data = request.pop('data', [])
+        data = self.data(request)
+        if not len(data):
+            raise ValueError('Parameter data is required')
+        sql = 'INSERT INTO ' + self.table_name + ' (' + ', '.join(list(data[0].keys())) + ')\n'
+        selects = []
+        for row in data if isinstance(data, list) else [data]:
+            values = [self._sql_value(row[column]) for column in row.keys()]
+            selects.append('SELECT ' + ', '.join(values))
+        sql += '\nUNION ALL\n'.join(selects)
         return Response({'status': 'ok'})
 
     def update(self, request, *args, **kwargs):

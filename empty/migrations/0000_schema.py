@@ -1,20 +1,17 @@
 from django.db import migrations
 
+from empty import settings #change this
+
 
 class Migration(migrations.Migration):
     initial = True
-
     dependencies = []
-    setup_database_sql = """
-            CREATE SCHEMA IF NOT EXISTS core;
-            CREATE SCHEMA IF NOT EXISTS history;
-        """
-
-    reverse_setup_database_sql = """
-            DROP SCHEMA IF EXISTS core CASCADE;
-            DROP SCHEMA IF EXISTS history CASCADE;
-        """  # noqa
-
+    setup_database_sql = f'''
+        CREATE SCHEMA IF NOT EXISTS {settings.SCHEMA};
+    '''
+    reverse_setup_database_sql = f'''
+        DROP SCHEMA IF EXISTS {settings.SCHEMA} CASCADE;
+    '''
     operations = [
         migrations.RunSQL(
             sql=setup_database_sql,
